@@ -1,0 +1,16 @@
+{
+    "name": "ponponumi/vite-loader",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ponponumi\\ViteLoader\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ponponumi",
+            "email": "ponponumi@gmail.com"
+        }
+    ],
+    "require": {}
+}
