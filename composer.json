@@ -12,5 +12,11 @@
             "email": "ponponumi@gmail.com"
         }
     ],
+    "repositories": {
+        "ponponumi/vite-loader": {
+            "type": "vcs",
+            "url": "https://github.com/ponponumi/vite-loader"
+        }
+    },
     "require": {}
 }
