@@ -100,6 +100,11 @@ class ViteLoader{
     return $html;
   }
 
+  public function html($sourcePath){
+    // HTMLに出力する
+    echo $this->htmlGet($sourcePath);
+  }
+
   public function htmlListGet(array $sourcePathList){
     // ソースのパスリストからHTMLを返す
     $html = "";
@@ -109,5 +114,10 @@ class ViteLoader{
     }
 
     return $html;
+  }
+
+  public function htmlList(array $sourcePathList){
+    // ソースのパスリストからHTMLを出力する
+    echo $this->htmlListGet($sourcePathList);
   }
 }
