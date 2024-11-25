@@ -11,10 +11,8 @@ class ViteLoader{
   public string $devServerHost = "";
 
   public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[]){
-    $buildPath = $this->lastSlashAdd($buildPath);
-
     $this->manifestPath = $manifestPath;
-    $this->buildPath = $buildPath;
+    $this->buildPath = $this->lastSlashAdd($buildPath);
 
     $this->errorMode = $errorMode;
 
