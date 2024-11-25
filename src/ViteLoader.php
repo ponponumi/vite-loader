@@ -128,6 +128,11 @@ class ViteLoader{
       }
     }
 
+    if($this->viteReloadPath !== ""){
+      $html = '<script type="module" src="' . $this->viteReloadPath .  '"></script>' . $html;
+      $this->viteReloadPath = "";
+    }
+
     return $html;
   }
 
