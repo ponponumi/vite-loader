@@ -23,11 +23,11 @@ class ViteLoader{
     $data = json_decode($json,true);
     $this->manifestData = $data;
 
-    $this->devMode = array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false;
-    $this->devServerHost = array_key_exists('devHost', $viteDevServer) ? $this->lastSlashAdd(strval($viteDevServer['devHost'])) : "";
-    $this->devServerHostWeb = array_key_exists('devHostWeb', $viteDevServer) ? $this->lastSlashAdd(strval($viteDevServer['devHostWeb'])) : $this->devServerHost;
-
-    $this->devServerAccessStatus = $this->devServerAccess();
+    $this->devServerSetting(
+      array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false,
+      array_key_exists('devHost', $viteDevServer) ? strval($viteDevServer['devHost']) : "",
+      array_key_exists('devHostWeb', $viteDevServer) ? strval($viteDevServer['devHostWeb']) : ""
+    );
   }
 
   public function lastSlashAdd($path){
@@ -185,5 +185,7 @@ class ViteLoader{
     $this->devMode = $devMode;
     $this->devServerHost = $this->lastSlashAdd($devHost);
     $this->devServerHostWeb = $devHostWeb !== "" ? $this->lastSlashAdd($devHostWeb) : $this->devServerHost;
+
+    $this->devServerAccessStatus = $this->devServerAccess();
   }
 }
