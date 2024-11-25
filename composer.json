@@ -18,7 +18,9 @@
             "url": "https://github.com/ponponumi/vite-loader"
         }
     },
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

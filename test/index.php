@@ -5,7 +5,14 @@ require __DIR__ . "/../vendor/autoload.php";
 $projectRootPath = __DIR__;
 $projectRootUrl = (!empty($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . str_replace($_SERVER['DOCUMENT_ROOT'], '', $projectRootPath);
 
+// $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build",false,[
+//   "devMode" => true,
+//   "devHost" => $_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"],
+//   "devHostWeb" => $_ENV["VITE_HOST_WEB"] . ":" . $_ENV["VITE_PORT"],
+// ]);
 $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build");
+
+// $vite->devServerSetting(false);
 
 ?>
 <!DOCTYPE html>
@@ -19,9 +26,21 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
 <body>
   <h1>テスト</h1>
   <p>テキストテキスト</p>
+
+  <ul>
+    <li>テキスト</li>
+    <li>テキスト</li>
+    <li class="test">テキスト</li>
+  </ul>
+
   <pre>
     <?php var_dump($vite->manifestDataGet()); ?>
   </pre>
-  <?php $vite->htmlList(["asset/js/script.js","asset/ts/script.ts"]); ?>
+  <?php $vite->htmlList([
+    "asset/js/script.js",
+    "asset/ts/script.ts",
+    "asset/ts/test.ts",
+  ]); ?>
+  <p>ホスト: <?= htmlspecialchars($_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"]) ?></p>
 </body>
 </html>
