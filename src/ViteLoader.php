@@ -182,8 +182,9 @@ class ViteLoader{
   }
 
   public function devServerSetting(bool $devMode,string $devHost,string $devHostWeb=""){
+    $this->devMode = $devMode;
+
     if($devMode){
-      $this->devMode = $devMode;
       $this->devServerHost = $this->lastSlashAdd($devHost);
       $this->devServerHostWeb = $devHostWeb !== "" ? $this->lastSlashAdd($devHostWeb) : $this->devServerHost;
 
