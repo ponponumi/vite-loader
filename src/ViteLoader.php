@@ -24,7 +24,7 @@ class ViteLoader{
 
     $this->devMode = array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false;
     $this->devServerHost = array_key_exists('devHost', $viteDevServer) ? $this->lastSlashAdd(strval($viteDevServer['devHost'])) : "";
-    $this->devServerHostWeb = array_key_exists('devHostWeb', $viteDevServer) ? $this->lastSlashAdd(strval($viteDevServer['devHost'])) : $this->devServerHost;
+    $this->devServerHostWeb = array_key_exists('devHostWeb', $viteDevServer) ? $this->lastSlashAdd(strval($viteDevServer['devHostWeb'])) : $this->devServerHost;
 
     $this->devServerAccessStatus = $this->devServerAccess();
   }
