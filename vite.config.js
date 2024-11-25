@@ -12,6 +12,7 @@ export default defineConfig({
     rollupOptions: {
       input: [
         'asset/js/script.js',
+        'asset/ts/script.ts',
         'asset/scss/style.scss',
       ],
     },
