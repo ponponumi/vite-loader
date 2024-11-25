@@ -1,7 +1,15 @@
+$testColor: red;
+
 p{
   color: red;
 }
 
 h1{
   color: green;
+}
+
+ul{
+  .test{
+    color: $testColor;
+  }
 }
