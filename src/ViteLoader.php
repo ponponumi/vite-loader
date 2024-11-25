@@ -22,7 +22,7 @@ class ViteLoader{
     $this->manifestData = $data;
 
     $this->devMode = array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false;
-    $this->devServerHost = array_key_exists('devHost', $viteDevServer) ? strval($viteDevServer['devHost']) : "";
+    $this->devServerHost = array_key_exists('devHost', $viteDevServer) ? $this->lastSlashAdd(strval($viteDevServer['devHost'])) : "";
 
     $this->devServerAccessStatus = $this->devServerAccess();
   }
