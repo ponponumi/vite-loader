@@ -11,13 +11,7 @@ class ViteLoader{
   public string $devServerHost = "";
 
   public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[]){
-    if($buildPath !== ""){
-      // ビルドパスの文字があれば
-      if(substr($buildPath,-1) !== "/"){
-        // 最後の文字がスラッシュでなければ
-        $buildPath .= "/";
-      }
-    }
+    $buildPath .= $this->lastSlashAdd($buildPath);
 
     $this->manifestPath = $manifestPath;
     $this->buildPath = $buildPath;
