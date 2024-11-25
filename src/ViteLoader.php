@@ -147,16 +147,18 @@ class ViteLoader{
     // 開発サーバーが動いていればtrue、動いていなければfalseを返す
     $check = false;
 
-    try{
-      $client = new \GuzzleHttp\Client();
-      $response = $client->request('GET', $this->devServerHost, [
-        // 'timeout' => 5,
-        'http_errors' => false,
-      ]);
+    if($this->devServerHost !== ""){
+      try{
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', $this->devServerHost, [
+          // 'timeout' => 5,
+          'http_errors' => false,
+        ]);
 
-      $check = true;
-    }catch(\Exception $e){
-      // echo $e->getMessage();
+        $check = true;
+      }catch(\Exception $e){
+        // echo $e->getMessage();
+      }
     }
 
     return $check;
