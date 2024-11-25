@@ -12,6 +12,7 @@ services:
     container_name: php8.2-trial
     environment:
       - VITE_HOST=http://vite
+      - VITE_HOST_WEB=http://localhost
       - VITE_PORT=${VITE_PORT:-5173}
 
   vite:
