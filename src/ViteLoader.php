@@ -109,10 +109,19 @@ class ViteLoader{
 
       switch ($extension) {
         case "css":
+        case "scss":
+        case "sass":
+        case "less":
+        case "stylus":
+        case "styl":
           $html = '<link rel="stylesheet" href="' . $url . '">';
           break;
 
         case "js":
+        case "ts":
+        case "jsx":
+        case "tsx":
+        case "coffee":
           $html = '<script src="' . $url . '"></script>';
           break;
       }
