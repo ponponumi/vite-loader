@@ -23,6 +23,13 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
 <body>
   <h1>テスト</h1>
   <p>テキストテキスト</p>
+
+  <ul>
+    <li>テキスト</li>
+    <li>テキスト</li>
+    <li class="test">テキスト</li>
+  </ul>
+
   <pre>
     <?php var_dump($vite->manifestDataGet()); ?>
   </pre>
