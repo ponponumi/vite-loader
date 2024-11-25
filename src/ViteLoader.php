@@ -181,7 +181,7 @@ class ViteLoader{
     return $check;
   }
 
-  public function devServerSetting(bool $devMode,string $devHost,string $devHostWeb=""){
+  public function devServerSetting(bool $devMode,string $devHost="",string $devHostWeb=""){
     $this->devMode = $devMode;
 
     if($devMode){
