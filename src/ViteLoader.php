@@ -19,6 +19,9 @@ class ViteLoader{
     $json = file_get_contents($manifestPath);
     $data = json_decode($json,true);
     $this->manifestData = $data;
+
+    $this->devMode = array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false;
+    $this->devServerHost = array_key_exists('devHost', $viteDevServer) ? strval($viteDevServer['devHost']) : "";
   }
 
   public function lastSlashAdd($path){
