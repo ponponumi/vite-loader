@@ -29,6 +29,19 @@ class ViteLoader{
     $this->manifestData = $data;
   }
 
+  public function lastSlashAdd($path){
+    // 最後にスラッシュを追加する
+    if($path !== ""){
+      // パスの文字があれば
+      if(substr($path,-1) !== "/"){
+        // 最後の文字がスラッシュでなければ
+        $path .= "/";
+      }
+    }
+
+    return $path;
+  }
+
   public function manifestDataGet(){
     // マニフェストデータを取得する
     return $this->manifestData;
