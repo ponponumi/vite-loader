@@ -8,7 +8,7 @@ class ViteLoader{
   public $manifestData;
   public $errorMode;
 
-  public function __construct($manifestPath,$buildPath="",$errorMode=false){
+  public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[]){
     if($buildPath !== ""){
       // ビルドパスの文字があれば
       if(substr($buildPath,-1) !== "/"){
