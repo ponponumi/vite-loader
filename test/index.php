@@ -5,7 +5,10 @@ require __DIR__ . "/../vendor/autoload.php";
 $projectRootPath = __DIR__;
 $projectRootUrl = (!empty($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . str_replace($_SERVER['DOCUMENT_ROOT'], '', $projectRootPath);
 
-$vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build");
+$vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build",false,[
+  "devMode" => true,
+  "devHost" => $_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"],
+]);
 
 ?>
 <!DOCTYPE html>
