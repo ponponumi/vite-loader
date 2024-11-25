@@ -129,7 +129,7 @@ class ViteLoader{
     }
 
     if($this->viteReloadPath !== ""){
-      $html = '<script type="module" src="' . $this->viteReloadPath .  '"></script>' . $html;
+      $html = '<script type="module" src="' . $this->viteReloadPath . '"></script>' . $html;
       $this->viteReloadPath = "";
     }
 
@@ -172,7 +172,7 @@ class ViteLoader{
 
         $check = true;
 
-        $this->viteReloadPath = $this->devServerHostWeb . '@vite/client"';
+        $this->viteReloadPath = $this->devServerHostWeb . '@vite/client';
       }catch(\Exception $e){
         // echo $e->getMessage();
       }
