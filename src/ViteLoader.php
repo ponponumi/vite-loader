@@ -133,4 +133,24 @@ class ViteLoader{
     // ソースのパスリストからHTMLを出力する
     echo $this->htmlListGet($sourcePathList);
   }
+
+  private function devServerAccess(){
+    // 開発サーバーにアクセスする
+    // 開発サーバーが動いていればtrue、動いていなければfalseを返す
+    $check = false;
+
+    try{
+      $client = new \GuzzleHttp\Client();
+      $response = $client->request('GET', $this->devServerHost, [
+        // 'timeout' => 5,
+        'http_errors' => false,
+      ]);
+
+      $check = true;
+    }catch(\Exception $e){
+      // echo $e->getMessage();
+    }
+
+    return $check;
+  }
 }
