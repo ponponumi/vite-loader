@@ -85,8 +85,11 @@ class ViteLoader{
       // ある場合
       if($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus){
         // 開発サーバーからのURLを取得するなら
+        return $this->devServerHost . $sourcePath;
+      }else{
+        // ビルドファイルのURLを取得するなら
+        return $this->buildPath . $data;
       }
-      return $this->buildPath . $data;
     }else{
       // ない場合
       return null;
