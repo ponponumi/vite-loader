@@ -9,6 +9,7 @@ class ViteLoader{
   public $errorMode;
   public bool $devMode = false;
   public string $devServerHost = "";
+  public bool $devServerAccessStatus;
 
   public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[]){
     $this->manifestPath = $manifestPath;
@@ -22,6 +23,8 @@ class ViteLoader{
 
     $this->devMode = array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false;
     $this->devServerHost = array_key_exists('devHost', $viteDevServer) ? strval($viteDevServer['devHost']) : "";
+
+    $this->devServerAccessStatus = $this->devServerAccess();
   }
 
   public function lastSlashAdd($path){
