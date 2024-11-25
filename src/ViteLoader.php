@@ -82,20 +82,19 @@ class ViteLoader{
   public function buildWebPathGet($sourcePath){
     // ソースのパスからビルド後のWeb用パスを取得する
     // なければnullを返す
-    $data = $this->buildPathGet($sourcePath);
-
-    if($data){
-      // ある場合
-      if($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus){
-        // 開発サーバーからのURLを取得するなら
-        return $this->devServerHostWeb . $sourcePath;
-      }else{
-        // ビルドファイルのURLを取得するなら
-        return $this->buildPath . $data;
-      }
+    if($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus){
+      // 開発サーバーからのURLを取得するなら
+      return $this->devServerHostWeb . $sourcePath;
     }else{
-      // ない場合
-      return null;
+      $data = $this->buildPathGet($sourcePath);
+
+      if($data){
+        // ある場合
+        return $this->buildPath . $data;
+      }else{
+        // ない場合
+        return null;
+    }
     }
   }
 
