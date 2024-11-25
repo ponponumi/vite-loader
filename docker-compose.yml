@@ -10,6 +10,9 @@ services:
     ports:
       - 9180:80
     container_name: php8.2-trial
+    environment:
+      - VITE_HOST=http://vite
+      - VITE_PORT="${VITE_PORT:-5173}"
 
   vite:
     image: node:22
