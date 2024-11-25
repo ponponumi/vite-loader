@@ -189,6 +189,8 @@ class ViteLoader{
       $this->devServerHostWeb = $devHostWeb !== "" ? $this->lastSlashAdd($devHostWeb) : $this->devServerHost;
 
       $this->devServerAccessStatus = $this->devServerAccess();
+    }else{
+      $this->viteReloadPath = "";
     }
   }
 }
