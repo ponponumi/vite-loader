@@ -11,7 +11,7 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
   "devHostWeb" => $_ENV["VITE_HOST_WEB"] . ":" . $_ENV["VITE_PORT"],
 ]);
 
-$vite->devServerSetting(false);
+// $vite->devServerSetting(false);
 
 ?>
 <!DOCTYPE html>
