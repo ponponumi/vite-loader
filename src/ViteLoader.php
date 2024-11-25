@@ -11,6 +11,7 @@ class ViteLoader{
   public string $devServerHost = "";
   public string $devServerHostWeb = "";
   public bool $devServerAccessStatus;
+  public string $viteReloadPath = "";
 
   public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[]){
     $this->manifestPath = $manifestPath;
@@ -165,6 +166,8 @@ class ViteLoader{
         ]);
 
         $check = true;
+
+        $this->viteReloadPath = $this->devServerHostWeb . '/@vite/client"';
       }catch(\Exception $e){
         // echo $e->getMessage();
       }
