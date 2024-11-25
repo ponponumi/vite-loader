@@ -5,7 +5,7 @@ namespace Ponponumi\ViteLoader;
 class ViteLoader{
   public $manifestPath;
   public $buildPath;
-  public $manifestData;
+  public $manifestData = [];
   public $errorMode;
   public bool $devMode = false;
   public string $devServerHost = "";
@@ -19,9 +19,11 @@ class ViteLoader{
 
     $this->errorMode = $errorMode;
 
-    $json = file_get_contents($manifestPath);
-    $data = json_decode($json,true);
-    $this->manifestData = $data;
+    if(file_exists($manifestPath)){
+      $json = file_get_contents($manifestPath);
+      $data = json_decode($json,true);
+      $this->manifestData = $data;
+    }
 
     $this->devServerSetting(
       array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false,
