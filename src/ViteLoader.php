@@ -172,7 +172,7 @@ class ViteLoader{
 
         $check = true;
 
-        $this->viteReloadPath = $this->devServerHostWeb . '/@vite/client"';
+        $this->viteReloadPath = $this->devServerHostWeb . '@vite/client"';
       }catch(\Exception $e){
         // echo $e->getMessage();
       }
