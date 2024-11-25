@@ -7,3 +7,4 @@
 /package-lock.json export-ignore
 /package.json export-ignore
 /vite.config.js export-ignore
+/composer.lock export-ignore
