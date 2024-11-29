@@ -261,4 +261,16 @@ class ViteLoader{
 
     return $result;
   }
+
+  public function viteReloadHtmlGet(){
+    // Viteのリロードスクリプト用HTMLを取得する
+    $html = "";
+    $reloadPath = $this->viteReloadPathGet();
+
+    if($reloadPath !== ""){
+      $html = '<script type="module" src="' . $reloadPath . '"></script>';
+    }
+
+    return $html;
+  }
 }
