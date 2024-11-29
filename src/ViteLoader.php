@@ -105,28 +105,15 @@ class ViteLoader{
     // なければ空文字を返す
     $html = "";
     $url = $this->buildWebPathGet($sourcePath);
+    $type = $this->typeGetPath($url);
 
-    if($url){
-      $extension = pathinfo($url, PATHINFO_EXTENSION);
-
-      switch ($extension) {
-        case "css":
-        case "scss":
-        case "sass":
-        case "less":
-        case "stylus":
-        case "styl":
-          $html = '<link rel="stylesheet" href="' . $url . '">';
-          break;
-
-        case "js":
-        case "ts":
-        case "jsx":
-        case "tsx":
-        case "coffee":
-          $html = '<script src="' . $url . '"></script>';
-          break;
-      }
+    switch($type){
+      case "style":
+        $html = '<link rel="stylesheet" href="' . $url . '">';
+        break;
+      case "script":
+        $html = '<script src="' . $url . '"></script>';
+        break;
     }
 
     if($this->viteReloadPath !== ""){
@@ -193,5 +180,43 @@ class ViteLoader{
     }else{
       $this->viteReloadPath = "";
     }
+  }
+
+  public function typeGetExtension(string $extension){
+    // 拡張子からファイルのタイプを取得する
+    $type = "";
+
+    switch (mb_strtolower($extension)) {
+      case "css":
+      case "scss":
+      case "sass":
+      case "less":
+      case "stylus":
+      case "styl":
+        $type = "style";
+        break;
+
+      case "js":
+      case "ts":
+      case "jsx":
+      case "tsx":
+      case "coffee":
+        $type = "script";
+        break;
+    }
+
+    return $type;
+  }
+
+  public function typeGetPath(string $path){
+    // パスからファイルのタイプを取得する
+    $result = "";
+
+    if ($path) {
+      $extension = pathinfo($path, PATHINFO_EXTENSION);
+      $result = $this->typeGetExtension($extension);
+    }
+
+    return $result;
   }
 }
