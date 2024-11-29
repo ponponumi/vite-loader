@@ -220,4 +220,16 @@ class ViteLoader{
 
     return $type;
   }
+
+  public function typeGetPath(string $path){
+    // パスからファイルのタイプを取得する
+    $result = "";
+
+    if ($path) {
+      $extension = pathinfo($path, PATHINFO_EXTENSION);
+      $result = $this->typeGetExtension($extension);
+    }
+
+    return $result;
+  }
 }
