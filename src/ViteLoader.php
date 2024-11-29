@@ -242,7 +242,7 @@ class ViteLoader{
         "path" => $this->viteReloadPath,
       ];
     }
-  }
 
-  return $result;
+    return $result;
+  }
 }
