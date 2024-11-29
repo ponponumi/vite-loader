@@ -274,4 +274,20 @@ class ViteLoader{
 
     return $html;
   }
+
+  public function typeWebPathListGet(array $pathList){
+    // タイプとWebのパスをリストで取得する
+    $result = [];
+    $viteReload = $this->typeViteReloadPathGet();
+
+    if($viteReload !== []){
+      $result[] = $viteReload;
+    }
+
+    foreach($pathList as $path){
+      $result[] = $this->typeWebPathGet($path);
+    }
+
+    return $result;
+  }
 }
