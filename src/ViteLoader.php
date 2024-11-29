@@ -231,6 +231,21 @@ class ViteLoader{
     ];
   }
 
+  public function viteReloadPathGet($delete=true){
+    // Viteのリロードスクリプトパスを取得する
+    $result = "";
+
+    if($this->viteReloadPath !== ""){
+      $result = $this->viteReloadPath;
+
+      if($delete){
+        $this->viteReloadPath = "";
+      }
+    }
+
+    return $result;
+  }
+
   public function typeViteReloadPathGet(){
     // タイプとViteのリロードスクリプトパスを取得する
     // なければ空の配列を返す
