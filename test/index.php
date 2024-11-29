@@ -40,6 +40,7 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
     "asset/js/script.js",
     "asset/ts/script.ts",
     "asset/ts/test.ts",
+    "asset/scss/style.scss",
   ]); ?>
   <p>ホスト: <?= htmlspecialchars($_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"]) ?></p>
 

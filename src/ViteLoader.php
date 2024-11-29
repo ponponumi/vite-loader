@@ -116,9 +116,10 @@ class ViteLoader{
         break;
     }
 
-    if($this->viteReloadPath !== ""){
-      $html = '<script type="module" src="' . $this->viteReloadPath . '"></script>' . $html;
-      $this->viteReloadPath = "";
+    $viteReloadHtml = $this->viteReloadHtmlGet();
+
+    if($viteReloadHtml !== ""){
+      $html = $viteReloadHtml . $html;
     }
 
     return $html;
@@ -215,6 +216,76 @@ class ViteLoader{
     if ($path) {
       $extension = pathinfo($path, PATHINFO_EXTENSION);
       $result = $this->typeGetExtension($extension);
+    }
+
+    return $result;
+  }
+
+  public function typeWebPathGet(string $path){
+    // タイプとWebのパスを取得する
+    $webPath = $this->buildWebPathGet($path);
+    $type = $this->typeGetPath($webPath);
+
+    return [
+      "type" => $type,
+      "path" => $webPath,
+    ];
+  }
+
+  public function viteReloadPathGet($delete=true){
+    // Viteのリロードスクリプトパスを取得する
+    $result = "";
+
+    if($this->viteReloadPath !== ""){
+      $result = $this->viteReloadPath;
+
+      if($delete){
+        $this->viteReloadPath = "";
+      }
+    }
+
+    return $result;
+  }
+
+  public function typeViteReloadPathGet(){
+    // タイプとViteのリロードスクリプトパスを取得する
+    // なければ空の配列を返す
+    $result = [];
+    $reloadPath = $this->viteReloadPathGet();
+
+    if($reloadPath !== ""){
+      $result = [
+        "type" => "script",
+        "path" => $reloadPath,
+      ];
+    }
+
+    return $result;
+  }
+
+  public function viteReloadHtmlGet(){
+    // Viteのリロードスクリプト用HTMLを取得する
+    $html = "";
+    $reloadPath = $this->viteReloadPathGet();
+
+    if($reloadPath !== ""){
+      $html = '<script type="module" src="' . $reloadPath . '"></script>';
+    }
+
+    return $html;
+  }
+
+  public function typeWebPathListGet(array $pathList){
+    // タイプとWebのパスをリストで取得する
+    $result = [];
+    $viteReload = $this->typeViteReloadPathGet();
+
+    if($viteReload !== []){
+      $result[] = $viteReload;
+    }
+
+    foreach($pathList as $path){
+      $result[] = $this->typeWebPathGet($path);
     }
 
     return $result;
