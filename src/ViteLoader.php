@@ -230,4 +230,19 @@ class ViteLoader{
       "path" => $path,
     ];
   }
+
+  public function typeViteReloadPathGet(){
+    // タイプとViteのリロードスクリプトパスを取得する
+    // なければ空の配列を返す
+    $result = [];
+
+    if($this->viteReloadPath !== ""){
+      $result = [
+        "type" => "script",
+        "path" => $this->viteReloadPath,
+      ];
+    }
+  }
+
+  return $result;
 }
