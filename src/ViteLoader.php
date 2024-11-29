@@ -186,7 +186,7 @@ class ViteLoader{
     // 拡張子からファイルのタイプを取得する
     $type = "";
 
-    switch ($extension) {
+    switch (mb_strtolower($extension)) {
       case "css":
       case "scss":
       case "sass":
