@@ -21,7 +21,7 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>テスト</title>
-  <?php $vite->html("asset/scss/style.scss"); ?>
+  <?php // $vite->html("asset/scss/style.scss"); ?>
 </head>
 <body>
   <h1>テスト</h1>
