@@ -18,7 +18,6 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <?= var_dump($vite->typeViteReloadPathGet()) ?>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>テスト</title>
