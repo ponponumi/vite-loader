@@ -228,7 +228,7 @@ class ViteLoader{
 
     return [
       "type" => $type,
-      "path" => $path,
+      "path" => $webPath,
     ];
   }
 
