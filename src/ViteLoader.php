@@ -241,6 +241,8 @@ class ViteLoader{
         "type" => "script",
         "path" => $this->viteReloadPath,
       ];
+
+      $this->viteReloadPath = "";
     }
 
     return $result;
