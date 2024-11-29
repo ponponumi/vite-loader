@@ -219,4 +219,15 @@ class ViteLoader{
 
     return $result;
   }
+
+  public function typeWebPathGet(string $path){
+    // タイプとWebのパスを取得する
+    $webPath = $this->buildWebPathGet($path);
+    $type = $this->typeGetPath($webPath);
+
+    return [
+      "type" => $type,
+      "path" => $path,
+    ];
+  }
 }
