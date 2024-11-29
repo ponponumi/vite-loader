@@ -250,14 +250,13 @@ class ViteLoader{
     // タイプとViteのリロードスクリプトパスを取得する
     // なければ空の配列を返す
     $result = [];
+    $reloadPath = $this->viteReloadPathGet();
 
-    if($this->viteReloadPath !== ""){
+    if($reloadPath !== ""){
       $result = [
         "type" => "script",
-        "path" => $this->viteReloadPath,
+        "path" => $reloadPath,
       ];
-
-      $this->viteReloadPath = "";
     }
 
     return $result;
