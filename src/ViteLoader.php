@@ -194,4 +194,30 @@ class ViteLoader{
       $this->viteReloadPath = "";
     }
   }
+
+  public function typeGetExtension(string $extension){
+    // 拡張子からファイルのタイプを取得する
+    $type = "";
+
+    switch ($extension) {
+      case "css":
+      case "scss":
+      case "sass":
+      case "less":
+      case "stylus":
+      case "styl":
+        $type = "style";
+        break;
+
+      case "js":
+      case "ts":
+      case "jsx":
+      case "tsx":
+      case "coffee":
+        $type = "script";
+        break;
+    }
+
+    return $type;
+  }
 }
