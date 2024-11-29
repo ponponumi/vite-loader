@@ -116,9 +116,10 @@ class ViteLoader{
         break;
     }
 
-    if($this->viteReloadPath !== ""){
-      $html = '<script type="module" src="' . $this->viteReloadPath . '"></script>' . $html;
-      $this->viteReloadPath = "";
+    $viteReloadHtml = $this->viteReloadHtmlGet();
+
+    if($viteReloadHtml !== ""){
+      $html = $viteReloadHtml . $html;
     }
 
     return $html;
