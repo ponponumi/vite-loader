@@ -275,6 +275,28 @@ class ViteLoader{
     return $html;
   }
 
+  public function separateByTypeWebPathListGet(array $pathList){
+    // タイプ別に分け、Webのパスをリストで取得する
+    $result = [
+      "style" => [],
+      "script" => [],
+    ];
+
+    $dataList = $this->typeWebPathListGet($pathList);
+
+    if($dataList !== []){
+      foreach($dataList as $data){
+        if($data["type"] === "style"){
+          $result["style"][] = $data["path"];
+        }elseif($data["type"] === "script"){
+          $result["script"][] = $data["path"];
+        }
+      }
+    }
+
+    return $result;
+  }
+
   public function typeWebPathListGet(array $pathList){
     // タイプとWebのパスをリストで取得する
     $result = [];

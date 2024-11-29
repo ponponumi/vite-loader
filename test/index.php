@@ -44,6 +44,15 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
   ]); ?>
   <p>ホスト: <?= htmlspecialchars($_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"]) ?></p>
 
+  <pre>
+    <?php var_dump($vite->separateByTypeWebPathListGet([
+      "asset/js/script.js",
+      "asset/ts/script.ts",
+      "asset/ts/test.ts",
+      "asset/scss/style.scss",
+    ])); ?>
+  </pre>
+
   <p><?= $vite->typeGetExtension("TS") ?></p>
   <p><?= $vite->typeGetExtension("js") ?></p>
   <p><?= $vite->typeGetExtension("css") ?></p>
