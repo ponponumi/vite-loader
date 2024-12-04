@@ -263,10 +263,10 @@ class ViteLoader{
     return $result;
   }
 
-  public function viteReloadHtmlGet(){
+  public function viteReloadHtmlGet($delete=true){
     // Viteのリロードスクリプト用HTMLを取得する
     $html = "";
-    $reloadPath = $this->viteReloadPathGet();
+    $reloadPath = $this->viteReloadPathGet($delete);
 
     if($reloadPath !== ""){
       $html = '<script type="module" src="' . $reloadPath . '"></script>';
