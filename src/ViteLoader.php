@@ -101,6 +101,10 @@ class ViteLoader{
     }
   }
 
+  public function moduleModeSet($set=true){
+    $this->moduleMode = $set;
+  }
+
   public function htmlGet($sourcePath){
     // HTMLを取得する
     // なければ空文字を返す
