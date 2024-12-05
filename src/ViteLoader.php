@@ -209,11 +209,11 @@ class ViteLoader{
     return $type;
   }
 
-  public function typeGetPath(string $path){
+  public function typeGetPath(string|null $path){
     // パスからファイルのタイプを取得する
     $result = "";
 
-    if ($path) {
+    if ($path !== null) {
       $extension = pathinfo($path, PATHINFO_EXTENSION);
       $result = $this->typeGetExtension($extension);
     }
