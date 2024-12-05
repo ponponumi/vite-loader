@@ -12,6 +12,7 @@ class ViteLoader{
   public string $devServerHostWeb = "";
   public bool $devServerAccessStatus;
   public string $viteReloadPath = "";
+  public $moduleMode = false;
 
   public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[]){
     $this->manifestPath = $manifestPath;
