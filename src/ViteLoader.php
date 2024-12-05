@@ -14,7 +14,7 @@ class ViteLoader{
   public string $viteReloadPath = "";
   public $moduleMode = false;
 
-  public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[]){
+  public function __construct($manifestPath,$buildPath="",$errorMode=false,array $viteDevServer=[],$moduleMode=false){
     $this->manifestPath = $manifestPath;
     $this->buildPath = $this->lastSlashAdd($buildPath);
 
@@ -31,6 +31,8 @@ class ViteLoader{
       array_key_exists('devHost', $viteDevServer) ? strval($viteDevServer['devHost']) : "",
       array_key_exists('devHostWeb', $viteDevServer) ? strval($viteDevServer['devHostWeb']) : ""
     );
+
+    $this->moduleModeSet($moduleMode);
   }
 
   public function lastSlashAdd($path){
