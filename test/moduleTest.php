@@ -10,7 +10,7 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
 
 // $vite->devServerSetting(false);
 
-$reloadHTML = $vite->viteReloadHtmlGet();
+$vite->moduleModeSet();
 
 ?>
 <!DOCTYPE html>
