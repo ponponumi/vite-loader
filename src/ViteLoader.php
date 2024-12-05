@@ -117,7 +117,11 @@ class ViteLoader{
         $html = '<link rel="stylesheet" href="' . $url . '">';
         break;
       case "script":
-        $html = '<script src="' . $url . '"></script>';
+        if($this->moduleMode){
+          $html = '<script type="module" src="' . $url . '"></script>';
+        }else{
+          $html = '<script src="' . $url . '"></script>';
+        }
         break;
     }
 
