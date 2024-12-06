@@ -112,6 +112,16 @@ class ViteLoader{
     return '<link rel="stylesheet" href="' . $url . '">';
   }
 
+  public function jsLinkCreate(string $url,$moduleMode=false){
+    $module = "";
+
+    if($moduleMode){
+      $module = 'type="module" ';
+    }
+
+    return '<script ' . $module . 'src="' . $url . '"></script>';
+  }
+
   public function htmlGet($sourcePath){
     // HTMLを取得する
     // なければ空文字を返す
