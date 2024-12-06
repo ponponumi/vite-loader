@@ -299,7 +299,7 @@ class ViteLoader{
     $reloadPath = $this->viteReloadPathGet($delete);
 
     if($reloadPath !== ""){
-      $html = '<script type="module" src="' . $reloadPath . '"></script>';
+      $html = $this->moduleLinkCreate($reloadPath);
     }
 
     return $html;
