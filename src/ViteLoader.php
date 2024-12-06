@@ -126,7 +126,7 @@ class ViteLoader{
     return $this->jsLinkCreate($url, true);
   }
 
-  public function htmlGet($sourcePath){
+  public function htmlGet($sourcePath,string $getType=""){
     // HTMLを取得する
     // なければ空文字を返す
     $html = "";
@@ -135,13 +135,17 @@ class ViteLoader{
 
     switch($type){
       case "style":
-        $html = $this->cssLinkCreate($url);
+        if($getType !== "script"){
+          $html = $this->cssLinkCreate($url);
+        }
         break;
       case "script":
-        if($this->moduleMode){
-          $html = $this->moduleLinkCreate($url);
-        }else{
-          $html = $this->jsLinkCreate($url);
+        if($getType !== "style"){
+          if($this->moduleMode){
+            $html = $this->moduleLinkCreate($url);
+          }else{
+            $html = $this->jsLinkCreate($url);
+          }
         }
         break;
     }
@@ -155,25 +159,25 @@ class ViteLoader{
     return $html;
   }
 
-  public function html($sourcePath){
+  public function html($sourcePath,string $getType=""){
     // HTMLに出力する
-    echo $this->htmlGet($sourcePath);
+    echo $this->htmlGet($sourcePath,$getType);
   }
 
-  public function htmlListGet(array $sourcePathList){
+  public function htmlListGet(array $sourcePathList,string $getType=""){
     // ソースのパスリストからHTMLを返す
     $html = "";
 
     foreach ($sourcePathList as $sourcePath) {
-      $html .= $this->htmlGet($sourcePath);
+      $html .= $this->htmlGet($sourcePath,$getType);
     }
 
     return $html;
   }
 
-  public function htmlList(array $sourcePathList){
+  public function htmlList(array $sourcePathList,string $getType=""){
     // ソースのパスリストからHTMLを出力する
-    echo $this->htmlListGet($sourcePathList);
+    echo $this->htmlListGet($sourcePathList,$getType);
   }
 
   private function devServerAccess(){
