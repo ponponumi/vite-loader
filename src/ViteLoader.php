@@ -135,13 +135,13 @@ class ViteLoader{
 
     switch($type){
       case "style":
-        $html = '<link rel="stylesheet" href="' . $url . '">';
+        $html = $this->cssLinkCreate($url);
         break;
       case "script":
         if($this->moduleMode){
-          $html = '<script type="module" src="' . $url . '"></script>';
+          $html = $this->moduleLinkCreate($url);
         }else{
-          $html = '<script src="' . $url . '"></script>';
+          $html = $this->jsLinkCreate($url);
         }
         break;
     }
