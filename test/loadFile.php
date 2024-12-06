@@ -22,7 +22,7 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
     "asset/scss/style.scss",
     "asset/js/script.js",
     "asset/ts/script.ts",
-  ]); ?>
+  ],"script"); ?>
 </head>
 <body>
   <h1>テスト</h1>
