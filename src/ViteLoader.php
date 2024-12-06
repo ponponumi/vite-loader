@@ -122,6 +122,10 @@ class ViteLoader{
     return '<script ' . $module . 'src="' . $url . '"></script>';
   }
 
+  public function moduleLinkCreate(string $url){
+    return $this->jsLinkCreate($url, true);
+  }
+
   public function htmlGet($sourcePath){
     // HTMLを取得する
     // なければ空文字を返す
