@@ -107,6 +107,11 @@ class ViteLoader{
     $this->moduleMode = $set;
   }
 
+  public function cssLinkCreate(string $url){
+    // CSSのリンクを作る
+    return '<link rel="stylesheet" href="' . $url . '">';
+  }
+
   public function htmlGet($sourcePath){
     // HTMLを取得する
     // なければ空文字を返す
