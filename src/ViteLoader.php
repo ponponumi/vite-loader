@@ -107,6 +107,25 @@ class ViteLoader{
     $this->moduleMode = $set;
   }
 
+  public function cssLinkCreate(string $url){
+    // CSSのリンクを作る
+    return '<link rel="stylesheet" href="' . $url . '">';
+  }
+
+  public function jsLinkCreate(string $url,$moduleMode=false){
+    $module = "";
+
+    if($moduleMode){
+      $module = 'type="module" ';
+    }
+
+    return '<script ' . $module . 'src="' . $url . '"></script>';
+  }
+
+  public function moduleLinkCreate(string $url){
+    return $this->jsLinkCreate($url, true);
+  }
+
   public function htmlGet($sourcePath){
     // HTMLを取得する
     // なければ空文字を返す
@@ -116,13 +135,13 @@ class ViteLoader{
 
     switch($type){
       case "style":
-        $html = '<link rel="stylesheet" href="' . $url . '">';
+        $html = $this->cssLinkCreate($url);
         break;
       case "script":
         if($this->moduleMode){
-          $html = '<script type="module" src="' . $url . '"></script>';
+          $html = $this->moduleLinkCreate($url);
         }else{
-          $html = '<script src="' . $url . '"></script>';
+          $html = $this->jsLinkCreate($url);
         }
         break;
     }
@@ -280,7 +299,7 @@ class ViteLoader{
     $reloadPath = $this->viteReloadPathGet($delete);
 
     if($reloadPath !== ""){
-      $html = '<script type="module" src="' . $reloadPath . '"></script>';
+      $html = $this->moduleLinkCreate($reloadPath);
     }
 
     return $html;
