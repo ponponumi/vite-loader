@@ -126,7 +126,7 @@ class ViteLoader{
     return $this->jsLinkCreate($url, true);
   }
 
-  public function htmlGet($sourcePath){
+  public function htmlGet($sourcePath,string $getType=""){
     // HTMLを取得する
     // なければ空文字を返す
     $html = "";
@@ -135,13 +135,17 @@ class ViteLoader{
 
     switch($type){
       case "style":
-        $html = $this->cssLinkCreate($url);
+        if($getType !== "script"){
+          $html = $this->cssLinkCreate($url);
+        }
         break;
       case "script":
-        if($this->moduleMode){
-          $html = $this->moduleLinkCreate($url);
-        }else{
-          $html = $this->jsLinkCreate($url);
+        if($getType !== "style"){
+          if($this->moduleMode){
+            $html = $this->moduleLinkCreate($url);
+          }else{
+            $html = $this->jsLinkCreate($url);
+          }
         }
         break;
     }
