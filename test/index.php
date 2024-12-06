@@ -59,6 +59,5 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
   <p><?= $vite->typeGetExtension("js") ?></p>
   <p><?= $vite->typeGetExtension("css") ?></p>
   <p><?= $vite->typeGetExtension("scss") ?></p>
-  <p><?= htmlspecialchars($reloadHTML) ?></p>
 </body>
 </html>
