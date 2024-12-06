@@ -159,25 +159,25 @@ class ViteLoader{
     return $html;
   }
 
-  public function html($sourcePath){
+  public function html($sourcePath,string $getType=""){
     // HTMLに出力する
-    echo $this->htmlGet($sourcePath);
+    echo $this->htmlGet($sourcePath,$getType);
   }
 
-  public function htmlListGet(array $sourcePathList){
+  public function htmlListGet(array $sourcePathList,string $getType=""){
     // ソースのパスリストからHTMLを返す
     $html = "";
 
     foreach ($sourcePathList as $sourcePath) {
-      $html .= $this->htmlGet($sourcePath);
+      $html .= $this->htmlGet($sourcePath,$getType);
     }
 
     return $html;
   }
 
-  public function htmlList(array $sourcePathList){
+  public function htmlList(array $sourcePathList,string $getType=""){
     // ソースのパスリストからHTMLを出力する
-    echo $this->htmlListGet($sourcePathList);
+    echo $this->htmlListGet($sourcePathList,$getType);
   }
 
   private function devServerAccess(){
