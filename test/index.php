@@ -7,8 +7,8 @@ $projectRootUrl = (!empty($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVE
 
 $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build",false,[
   "devMode" => true,
-  // "devHost" => $_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"],
-  // "devHostWeb" => $_ENV["VITE_HOST_WEB"] . ":" . $_ENV["VITE_PORT"],
+  "devHost" => $_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"],
+  "devHostWeb" => $_ENV["VITE_HOST_WEB"] . ":" . $_ENV["VITE_PORT"],
 ]);
 // $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build");
 
