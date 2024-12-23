@@ -267,10 +267,7 @@ class ViteLoader {
         $webPath = $this->buildWebPathGet($path);
         $type = $this->typeGetPath($webPath);
 
-        return [
-            "type" => $type,
-            "path" => $webPath,
-        ];
+        return $this->typeGetArrayCreate($webPath, $type);
     }
 
     public function viteReloadPathGet($delete = true) {
