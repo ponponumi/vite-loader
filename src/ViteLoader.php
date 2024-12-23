@@ -217,6 +217,13 @@ class ViteLoader {
         }
     }
 
+    private function typeGetArrayCreate(string $path, string $type){
+        return  [
+            "type" => $type,
+            "path" => $path,
+        ];
+    }
+
     public function typeGetExtension(string $extension) {
         // 拡張子からファイルのタイプを取得する
         $type = "";
