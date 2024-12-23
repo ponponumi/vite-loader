@@ -349,10 +349,12 @@ class ViteLoader{
 
   public function sourcePathGet(string $webPath): string{
     // Webのパスからソースのパスを取得する
-    $webPath = str_replace([
-      $this->buildPath,
-      $this->devServerHostWeb,
-    ], "", $webPath);
+    if(str_contains($this->devServerHostWeb,$webPath)){
+      // 開発サーバーが動いていればそのまま返す
+      return str_replace($this->devServerHostWeb, "", $webPath);
+    }
+
+    $webPath = str_replace($this->buildPath, "", $webPath);
 
     $sourceData = array_filter($this->manifestData, function ($manifest) use ($webPath) {
       return $manifest["file"] === $webPath;
