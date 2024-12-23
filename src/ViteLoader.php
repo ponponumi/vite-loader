@@ -349,7 +349,7 @@ class ViteLoader{
 
   public function sourcePathGet(string $webPath): string{
     // Webのパスからソースのパスを取得する
-    if($this->viteReloadPath !== "" && str_contains($webPath,$this->devServerHostWeb)){
+    if($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus && str_contains($webPath,$this->devServerHostWeb)){
       // 開発サーバーが動いていればそのまま返す
       return str_replace($this->devServerHostWeb, "", $webPath);
     }
