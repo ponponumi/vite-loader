@@ -354,7 +354,7 @@ class ViteLoader{
       $this->devServerHostWeb,
     ], "", $webPath);
 
-    $sourceData = array_filter($this->manifestPath, function ($manifest) use ($webPath) {
+    $sourceData = array_filter($this->manifestData, function ($manifest) use ($webPath) {
       return $manifest["file"] === $webPath;
     });
 
