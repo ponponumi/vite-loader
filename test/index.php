@@ -67,7 +67,7 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
 
   ?>
 
-  <p>Webのパス<?= $webPath ?></p>
-  <p>ソースのパス<?= $sourcePath ?></p>
+  <p>Webのパス: <?= $webPath ?></p>
+  <p>ソースのパス: <?= $sourcePath ?></p>
 </body>
 </html>
