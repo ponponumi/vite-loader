@@ -346,4 +346,20 @@ class ViteLoader{
 
     return $result;
   }
+
+  public function sourcePathGet(string $webPath): string{
+    // Webのパスからソースのパスを取得する
+    $webPath = str_replace([
+      $this->buildPath,
+      $this->devServerHostWeb,
+    ], "", $webPath);
+
+    $sourceData = array_filter($this->manifestPath, function ($manifest) use ($webPath) {
+      return $manifest["file"] === $webPath;
+    });
+
+    $source = $sourceData ? array_key_first($sourceData) : "";
+
+    return $source;
+  }
 }
