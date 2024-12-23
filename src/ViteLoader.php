@@ -292,10 +292,7 @@ class ViteLoader {
         $reloadPath = $this->viteReloadPathGet();
 
         if ($reloadPath !== "") {
-            $result = [
-                "type" => "script",
-                "path" => $reloadPath,
-            ];
+            $result = $this->typeGetArrayCreate($reloadPath, "script");
         }
 
         return $result;
