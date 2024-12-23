@@ -217,7 +217,11 @@ class ViteLoader {
         }
     }
 
-    private function typeGetArrayCreate(string $path, string $type){
+    private function typeGetArrayCreate(string|null $path, string $type){
+        if($path === null){
+            $path = "";
+        }
+
         return  [
             "type" => $type,
             "path" => $path,
@@ -348,8 +352,12 @@ class ViteLoader {
         return $result;
     }
 
-    public function sourcePathGet(string $webPath): string {
+    public function sourcePathGet(string|null $webPath): string {
         // Webのパスからソースのパスを取得する
+        if($webPath === null){
+            return "";
+        }
+
         if ($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus && str_contains($webPath, $this->devServerHostWeb)) {
             // 開発サーバーが動いていればそのまま返す
             return str_replace($this->devServerHostWeb, "", $webPath);
