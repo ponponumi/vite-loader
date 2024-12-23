@@ -346,4 +346,22 @@ class ViteLoader{
 
     return $result;
   }
+
+  public function sourcePathGet(string $webPath): string{
+    // Webのパスからソースのパスを取得する
+    if($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus && str_contains($webPath,$this->devServerHostWeb)){
+      // 開発サーバーが動いていればそのまま返す
+      return str_replace($this->devServerHostWeb, "", $webPath);
+    }
+
+    $webPath = str_replace($this->buildPath, "", $webPath);
+
+    $sourceData = array_filter($this->manifestData, function ($manifest) use ($webPath) {
+      return $manifest["file"] === $webPath;
+    });
+
+    $source = $sourceData ? array_key_first($sourceData) : "";
+
+    return $source;
+  }
 }

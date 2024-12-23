@@ -7,8 +7,8 @@ $projectRootUrl = (!empty($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVE
 
 $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build",false,[
   "devMode" => true,
-  "devHost" => $_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"],
-  "devHostWeb" => $_ENV["VITE_HOST_WEB"] . ":" . $_ENV["VITE_PORT"],
+  // "devHost" => $_ENV["VITE_HOST"] . ":" . $_ENV["VITE_PORT"],
+  // "devHostWeb" => $_ENV["VITE_HOST_WEB"] . ":" . $_ENV["VITE_PORT"],
 ]);
 // $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.json",$projectRootUrl . "/build");
 
@@ -59,5 +59,15 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
   <p><?= $vite->typeGetExtension("js") ?></p>
   <p><?= $vite->typeGetExtension("css") ?></p>
   <p><?= $vite->typeGetExtension("scss") ?></p>
+
+  <?php
+
+  $webPath = $vite->buildWebPathGet("asset/scss/style.scss");
+  $sourcePath = $vite->sourcePathGet($webPath);
+
+  ?>
+
+  <p>Webのパス: <?= $webPath ?></p>
+  <p>ソースのパス: <?= $sourcePath ?></p>
 </body>
 </html>
