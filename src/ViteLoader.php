@@ -350,6 +350,10 @@ class ViteLoader {
 
     public function sourcePathGet(string|null $webPath): string {
         // Webのパスからソースのパスを取得する
+        if($webPath === null){
+            return "";
+        }
+
         if ($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus && str_contains($webPath, $this->devServerHostWeb)) {
             // 開発サーバーが動いていればそのまま返す
             return str_replace($this->devServerHostWeb, "", $webPath);
