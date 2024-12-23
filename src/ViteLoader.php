@@ -217,6 +217,13 @@ class ViteLoader {
         }
     }
 
+    private function typeGetArrayCreate(string $path, string $type){
+        return  [
+            "type" => $type,
+            "path" => $path,
+        ];
+    }
+
     public function typeGetExtension(string $extension) {
         // 拡張子からファイルのタイプを取得する
         $type = "";
@@ -260,10 +267,7 @@ class ViteLoader {
         $webPath = $this->buildWebPathGet($path);
         $type = $this->typeGetPath($webPath);
 
-        return [
-            "type" => $type,
-            "path" => $webPath,
-        ];
+        return $this->typeGetArrayCreate($webPath, $type);
     }
 
     public function viteReloadPathGet($delete = true) {
@@ -288,10 +292,7 @@ class ViteLoader {
         $reloadPath = $this->viteReloadPathGet();
 
         if ($reloadPath !== "") {
-            $result = [
-                "type" => "script",
-                "path" => $reloadPath,
-            ];
+            $result = $this->typeGetArrayCreate($reloadPath, "script");
         }
 
         return $result;
