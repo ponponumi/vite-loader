@@ -29,4 +29,16 @@ class TypeGet
 
         return $type;
     }
+
+    public static function path(string|null $path) {
+        // パスからファイルのタイプを取得する
+        $result = "";
+
+        if ($path !== null) {
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $result = self::extension($extension);
+        }
+
+        return $result;
+    }
 }
