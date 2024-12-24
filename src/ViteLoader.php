@@ -211,40 +211,12 @@ class ViteLoader {
 
     public function typeGetExtension(string $extension) {
         // 拡張子からファイルのタイプを取得する
-        $type = "";
-
-        switch (mb_strtolower($extension)) {
-            case "css":
-            case "scss":
-            case "sass":
-            case "less":
-            case "stylus":
-            case "styl":
-                $type = "style";
-                break;
-
-            case "js":
-            case "ts":
-            case "jsx":
-            case "tsx":
-            case "coffee":
-                $type = "script";
-                break;
-        }
-
-        return $type;
+        return TypeGet::extension($extension);
     }
 
     public function typeGetPath(string|null $path) {
         // パスからファイルのタイプを取得する
-        $result = "";
-
-        if ($path !== null) {
-            $extension = pathinfo($path, PATHINFO_EXTENSION);
-            $result = $this->typeGetExtension($extension);
-        }
-
-        return $result;
+        return TypeGet::path($path);
     }
 
     public function typeWebPathGet(string $path) {
