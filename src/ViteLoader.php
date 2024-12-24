@@ -35,7 +35,7 @@ class ViteLoader {
         $this->moduleModeSet($moduleMode);
     }
 
-    public function lastSlashAdd($path) {
+    public function lastSlashAdd(string $path) {
         // 最後にスラッシュを追加する
         return LinkCreate::urlLastSlashAdd($path);
     }
