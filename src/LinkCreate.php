@@ -41,4 +41,30 @@ class LinkCreate
 
         return $url;
     }
+
+    public static function htmlCreate(string $url, $moduleMode=false, string $getType=""): string
+    {
+
+        $html = "";
+        $type = TypeGet::path($url);
+
+        switch ($type) {
+            case "style":
+                if ($getType !== "script") {
+                    $html = self::css($url);
+                }
+                break;
+            case "script":
+                if ($getType !== "style") {
+                    if ($moduleMode) {
+                        $html = self::module($url);
+                    } else {
+                        $html = self::js($url);
+                    }
+                }
+                break;
+        }
+
+        return $html;
+    }
 }
