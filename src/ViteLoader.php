@@ -110,26 +110,8 @@ class ViteLoader {
     public function htmlGet($sourcePath, string $getType = "") {
         // HTMLを取得する
         // なければ空文字を返す
-        $html = "";
         $url = $this->buildWebPathGet($sourcePath);
-        $type = $this->typeGetPath($url);
-
-        switch ($type) {
-            case "style":
-                if ($getType !== "script") {
-                    $html = $this->cssLinkCreate($url);
-                }
-                break;
-            case "script":
-                if ($getType !== "style") {
-                    if ($this->moduleMode) {
-                        $html = $this->moduleLinkCreate($url);
-                    } else {
-                        $html = $this->jsLinkCreate($url);
-                    }
-                }
-                break;
-        }
+        $html = LinkCreate::htmlCreate($url, $this->moduleMode, $getType);
 
         $viteReloadHtml = $this->viteReloadHtmlGet();
 
