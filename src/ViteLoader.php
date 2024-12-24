@@ -19,12 +19,7 @@ class ViteLoader {
         $this->buildPath = $this->lastSlashAdd($buildPath);
 
         $this->errorMode = $errorMode;
-
-        if (file_exists($manifestPath)) {
-            $json = file_get_contents($manifestPath);
-            $data = json_decode($json, true);
-            $this->manifestData = $data;
-        }
+        $this->manifestData = Manifest::load($manifestPath);
 
         $this->devServerSetting(
             array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false,
