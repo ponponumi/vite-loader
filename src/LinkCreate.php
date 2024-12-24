@@ -27,4 +27,18 @@ class LinkCreate
         // JSのモジュールのリンクを作る
         return self::js($url, true);
     }
+
+    public static function urlLastSlashAdd(string $url): string
+    {
+        // URLの最後にスラッシュを追加する
+        if ($url !== "") {
+            // パスの文字があれば
+            if (substr($url, -1) !== "/") {
+                // 最後の文字がスラッシュでなければ
+                $url .= "/";
+            }
+        }
+
+        return $url;
+    }
 }
