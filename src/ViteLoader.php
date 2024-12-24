@@ -109,21 +109,15 @@ class ViteLoader {
 
     public function cssLinkCreate(string $url) {
         // CSSのリンクを作る
-        return '<link rel="stylesheet" href="' . $url . '">';
+        return LinkCreate::css($url);
     }
 
     public function jsLinkCreate(string $url, $moduleMode = false) {
-        $module = "";
-
-        if ($moduleMode) {
-            $module = 'type="module" ';
-        }
-
-        return '<script ' . $module . 'src="' . $url . '"></script>';
+        return LinkCreate::js($url, $moduleMode);
     }
 
     public function moduleLinkCreate(string $url) {
-        return $this->jsLinkCreate($url, true);
+        return LinkCreate::module($url);
     }
 
     public function htmlGet($sourcePath, string $getType = "") {
