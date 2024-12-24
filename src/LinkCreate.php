@@ -10,7 +10,8 @@ class LinkCreate
         return '<link rel="stylesheet" href="' . $url . '">';
     }
 
-    public static function jsLinkCreate(string $url, $moduleMode = false) {
+    public static function jsLinkCreate(string $url, $moduleMode = false): string
+    {
         // JSのリンクを作る
         $module = "";
 
