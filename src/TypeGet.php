@@ -30,7 +30,8 @@ class TypeGet
         return $type;
     }
 
-    public static function path(string|null $path) {
+    public static function path(string|null $path): string
+    {
         // パスからファイルのタイプを取得する
         $result = "";
 
