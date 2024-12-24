@@ -20,4 +20,10 @@ class LinkCreate
 
         return '<script ' . $module . 'src="' . $url . '"></script>';
     }
+
+    public static function moduleLinkCreate(string $url): string
+    {
+        // JSのモジュールのリンクを作る
+        return self::jsLinkCreate($url, true);
+    }
 }
