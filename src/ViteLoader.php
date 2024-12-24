@@ -37,15 +37,7 @@ class ViteLoader {
 
     public function lastSlashAdd($path) {
         // 最後にスラッシュを追加する
-        if ($path !== "") {
-            // パスの文字があれば
-            if (substr($path, -1) !== "/") {
-                // 最後の文字がスラッシュでなければ
-                $path .= "/";
-            }
-        }
-
-        return $path;
+        return LinkCreate::urlLastSlashAdd($path);
     }
 
     public function manifestDataGet() {
