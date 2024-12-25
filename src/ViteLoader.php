@@ -204,7 +204,8 @@ class ViteLoader {
         return $this->typeGetArrayCreate($webPath, $type);
     }
 
-    public function viteReloadPathGet($delete = true) {
+    public function viteReloadPathGet($delete = true): string
+    {
         // Viteのリロードスクリプトパスを取得する
         $result = "";
 
