@@ -36,4 +36,16 @@ class Manifest
             return [];
         }
     }
+
+    public static function pathGet(string $sourcePath, array $manifestData, $errorMode=false): string
+    {
+        $result = "";
+        $data = self::dataGet($sourcePath, $manifestData, $errorMode);
+
+        if($data !== []){
+            $result = $data["file"];
+        }
+
+        return $result;
+    }
 }
