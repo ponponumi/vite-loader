@@ -52,8 +52,8 @@ class Manifest
     public static function webPathGet(
         string $sourcePath,
         array $manifestData,
-        $devMode=false,
         string $buildPath="",
+        $devMode=false,
         string $devServerHostWeb="",
         $devServerAccessStatus=false,
         $errorMode=false
