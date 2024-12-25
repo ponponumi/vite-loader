@@ -114,7 +114,8 @@ class ViteLoader {
         echo $this->htmlGet($sourcePath, $getType);
     }
 
-    public function htmlListGet(array $sourcePathList, string $getType = "") {
+    public function htmlListGet(array $sourcePathList, string $getType = ""): string
+    {
         // ソースのパスリストからHTMLを返す
         $html = "";
 
