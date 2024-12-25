@@ -40,21 +40,11 @@ class ViteLoader {
         return $this->manifestData;
     }
 
-    public function buildDataGet($sourcePath) {
+    public function buildDataGet($sourcePath): array
+    {
         // ソースのパスからビルド後のデータを取得する
-        // なければnullを返す
-        if (array_key_exists($sourcePath, $this->manifestData)) {
-            // ある場合
-            return $this->manifestData[$sourcePath];
-        } else {
-            // ない場合
-            if ($this->errorMode) {
-                // エラーモードが有効であれば
-                throw new \Exception("'$sourcePath' は見つかりません");
-            }
-
-            return null;
-        }
+        // なければ空の配列を返す
+        return Manifest::dataGet($sourcePath, $this->manifestData, $this->errorMode);
     }
 
     public function buildPathGet($sourcePath) {
