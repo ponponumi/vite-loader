@@ -171,7 +171,8 @@ class ViteLoader {
         }
     }
 
-    private function typeGetArrayCreate(string|null $path, string $type){
+    private function typeGetArrayCreate(string|null $path, string $type): array
+    {
         if($path === null){
             $path = "";
         }
