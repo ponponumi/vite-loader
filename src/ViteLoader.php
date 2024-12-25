@@ -108,7 +108,8 @@ class ViteLoader {
         return $html;
     }
 
-    public function html($sourcePath, string $getType = "") {
+    public function html($sourcePath, string $getType = ""): void
+    {
         // HTMLに出力する
         echo $this->htmlGet($sourcePath, $getType);
     }
