@@ -132,7 +132,8 @@ class ViteLoader {
         echo $this->htmlListGet($sourcePathList, $getType);
     }
 
-    private function devServerAccess() {
+    private function devServerAccess(): bool
+    {
         // 開発サーバーにアクセスする
         // 開発サーバーが動いていればtrue、動いていなければfalseを返す
         $check = false;
