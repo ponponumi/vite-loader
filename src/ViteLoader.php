@@ -82,7 +82,8 @@ class ViteLoader {
         return LinkCreate::css($url);
     }
 
-    public function jsLinkCreate(string $url, $moduleMode = false) {
+    public function jsLinkCreate(string $url, $moduleMode = false): string
+    {
         return LinkCreate::js($url, $moduleMode);
     }
 
