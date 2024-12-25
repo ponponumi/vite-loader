@@ -195,7 +195,8 @@ class ViteLoader {
         return TypeGet::path($path);
     }
 
-    public function typeWebPathGet(string $path) {
+    public function typeWebPathGet(string $path): array
+    {
         // タイプとWebのパスを取得する
         $webPath = $this->buildWebPathGet($path);
         $type = $this->typeGetPath($webPath);
