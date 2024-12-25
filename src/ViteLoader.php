@@ -234,7 +234,8 @@ class ViteLoader {
         return $result;
     }
 
-    public function viteReloadHtmlGet($delete = true) {
+    public function viteReloadHtmlGet($delete = true): string
+    {
         // Viteのリロードスクリプト用HTMLを取得する
         $html = "";
         $reloadPath = $this->viteReloadPathGet($delete);
