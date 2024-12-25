@@ -247,7 +247,8 @@ class ViteLoader {
         return $html;
     }
 
-    public function separateByTypeWebPathListGet(array $pathList) {
+    public function separateByTypeWebPathListGet(array $pathList): array
+    {
         // タイプ別に分け、Webのパスをリストで取得する
         $result = [
             "style" => [],
