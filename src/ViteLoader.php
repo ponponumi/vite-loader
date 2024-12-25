@@ -2,7 +2,8 @@
 
 namespace Ponponumi\ViteLoader;
 
-class ViteLoader {
+class ViteLoader 
+{
     public $manifestPath;
     public $buildPath;
     public $manifestData = [];
