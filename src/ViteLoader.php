@@ -183,7 +183,8 @@ class ViteLoader {
         ];
     }
 
-    public function typeGetExtension(string $extension) {
+    public function typeGetExtension(string $extension): string
+    {
         // 拡張子からファイルのタイプを取得する
         return TypeGet::extension($extension);
     }
