@@ -270,7 +270,8 @@ class ViteLoader {
         return $result;
     }
 
-    public function typeWebPathListGet(array $pathList) {
+    public function typeWebPathListGet(array $pathList): array
+    {
         // タイプとWebのパスをリストで取得する
         $result = [];
         $viteReload = $this->typeViteReloadPathGet();
