@@ -48,4 +48,33 @@ class Manifest
 
         return $result;
     }
+
+    public static function webPathGet(
+        string $sourcePath,
+        array $manifestData,
+        $devMode=false,
+        string $buildPath="",
+        string $devServerHostWeb="",
+        $devServerAccessStatus=false,
+        $errorMode=false
+    ): string
+    {
+        // Webのパスを取得
+        $path = "";
+
+        if($devMode && $devServerHostWeb !== "" && $devServerAccessStatus){
+            // デバッグモードなら
+            $path = $devServerHostWeb . $sourcePath;
+        }else{
+            // デバッグモードでなければ
+            $data = self::pathGet($sourcePath, $manifestData, $errorMode);
+
+            if($data !== ""){
+                // データがあれば
+                $path = $buildPath . $data;
+            }
+        }
+
+        return $path;
+    }
 }
