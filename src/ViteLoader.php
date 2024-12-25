@@ -92,7 +92,8 @@ class ViteLoader {
         return LinkCreate::module($url);
     }
 
-    public function htmlGet($sourcePath, string $getType = "") {
+    public function htmlGet($sourcePath, string $getType = ""): string
+    {
         // HTMLを取得する
         // なければ空文字を返す
         $url = $this->buildWebPathGet($sourcePath);
