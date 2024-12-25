@@ -14,7 +14,8 @@ class ViteLoader {
     public string $viteReloadPath = "";
     public $moduleMode = false;
 
-    public function __construct(string $manifestPath, string $buildPath = "", $errorMode = false, array $viteDevServer = [], $moduleMode = false) {
+    public function __construct(string $manifestPath, string $buildPath = "", $errorMode = false, array $viteDevServer = [], $moduleMode = false)
+    {
         $this->manifestPath = $manifestPath;
         $this->buildPath = $this->lastSlashAdd($buildPath);
 
