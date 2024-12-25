@@ -189,7 +189,8 @@ class ViteLoader {
         return TypeGet::extension($extension);
     }
 
-    public function typeGetPath(string|null $path) {
+    public function typeGetPath(string|null $path): string
+    {
         // パスからファイルのタイプを取得する
         return TypeGet::path($path);
     }
