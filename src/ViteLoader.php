@@ -287,7 +287,8 @@ class ViteLoader {
         return $result;
     }
 
-    public function sourcePathGet(string|null $webPath): string {
+    public function sourcePathGet(string|null $webPath): string
+    {
         // Webのパスからソースのパスを取得する
         if($webPath === null){
             return "";
