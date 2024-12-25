@@ -76,7 +76,8 @@ class ViteLoader {
         $this->moduleMode = $set;
     }
 
-    public function cssLinkCreate(string $url) {
+    public function cssLinkCreate(string $url): string
+    {
         // CSSのリンクを作る
         return LinkCreate::css($url);
     }
