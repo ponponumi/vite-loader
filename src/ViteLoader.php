@@ -220,7 +220,8 @@ class ViteLoader {
         return $result;
     }
 
-    public function typeViteReloadPathGet() {
+    public function typeViteReloadPathGet(): array
+    {
         // タイプとViteのリロードスクリプトパスを取得する
         // なければ空の配列を返す
         $result = [];
