@@ -71,7 +71,8 @@ class ViteLoader {
         );
     }
 
-    public function moduleModeSet($set = true) {
+    public function moduleModeSet($set = true): void
+    {
         $this->moduleMode = $set;
     }
 
