@@ -54,23 +54,19 @@ class ViteLoader {
         return Manifest::pathGet($sourcePath, $this->manifestData, $this->errorMode);
     }
 
-    public function buildWebPathGet($sourcePath) {
+    public function buildWebPathGet($sourcePath): string
+    {
         // ソースのパスからビルド後のWeb用パスを取得する
-        // なければnullを返す
-        if ($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus) {
-            // 開発サーバーからのURLを取得するなら
-            return $this->devServerHostWeb . $sourcePath;
-        } else {
-            $data = $this->buildPathGet($sourcePath);
-
-            if ($data) {
-                // ある場合
-                return $this->buildPath . $data;
-            } else {
-                // ない場合
-                return null;
-            }
-        }
+        // なければ空の文字を返す
+        return Manifest::webPathGet(
+            $sourcePath,
+            $this->manifestData,
+            $this->buildPath,
+            $this->devMode,
+            $this->devServerHostWeb,
+            $this->devServerAccessStatus,
+            $this->errorMode
+        );
     }
 
     public function moduleModeSet($set = true) {
