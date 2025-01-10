@@ -39,6 +39,18 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td><?= htmlspecialchars('<script type="module" src="/assets/module.js"></script>') ?></td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::module("/assets/module.js")) ?></td>
             </tr>
+            <tr>
+                <td>http://localhost/</td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("http://localhost")) ?></td>
+            </tr>
+            <tr>
+                <td>http://localhost/</td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("http://localhost/")) ?></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("")) ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
