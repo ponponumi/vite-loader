@@ -48,6 +48,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("http://localhost/")) ?></td>
             </tr>
             <tr>
+                <td>http://localhost:9180/</td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("http://localhost:9180")) ?></td>
+            </tr>
+            <tr>
                 <td>(空の文字列)</td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("")) ?></td>
             </tr>
