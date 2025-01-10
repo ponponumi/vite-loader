@@ -59,6 +59,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td>script</td>
                 <td><?= \Ponponumi\ViteLoader\TypeGet::extension("ts") ?></td>
             </tr>
+            <tr>
+                <td>script</td>
+                <td><?= \Ponponumi\ViteLoader\TypeGet::extension("tsx") ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
