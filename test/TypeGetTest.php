@@ -71,6 +71,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td>(空の文字列)</td>
                 <td><?= \Ponponumi\ViteLoader\TypeGet::extension("jpg") ?></td>
             </tr>
+            <tr>
+                <td>(空の文字列)</td>
+                <td><?= \Ponponumi\ViteLoader\TypeGet::extension("png") ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
