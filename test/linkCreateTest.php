@@ -75,6 +75,14 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td><?= htmlspecialchars('<script src="/assets/script.ts"></script>') ?></td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/script.ts")) ?></td>
             </tr>
+            <tr>
+                <td><?= htmlspecialchars('<script type="module" src="/assets/script.ts"></script>') ?></td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/script.ts",true)) ?></td>
+            </tr>
+            <tr>
+                <td><?= htmlspecialchars('<script type="module" src="/assets/script.ts"></script>') ?></td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/script.ts",true)) ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
