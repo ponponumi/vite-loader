@@ -91,6 +91,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td><?= htmlspecialchars('(空の文字列)') ?></td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/script.ts",true,"style")) ?></td>
             </tr>
+            <tr>
+                <td><?= htmlspecialchars('(空の文字列)') ?></td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/style.sass",true,"script")) ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
