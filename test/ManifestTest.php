@@ -19,3 +19,13 @@ $webPath = \Ponponumi\ViteLoader\Manifest::webPathGet(
     "http://localhost"
 );
 var_dump($webPath);
+
+$webPath = \Ponponumi\ViteLoader\Manifest::webPathGet(
+    "asset/js/script.js",
+    $manifest,
+    "http://localhost",
+    true,
+    "http://localhost:5173",
+    true
+);
+var_dump($webPath);
