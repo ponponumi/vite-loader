@@ -48,7 +48,7 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("http://localhost/")) ?></td>
             </tr>
             <tr>
-                <td></td>
+                <td>(空の文字列)</td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("")) ?></td>
             </tr>
         </tbody>
