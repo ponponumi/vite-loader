@@ -23,7 +23,10 @@ require __DIR__ . "/../vendor/autoload.php";
             </tr>
         </thead>
         <tbody>
-            <!--  -->
+            <tr>
+                <td>style</td>
+                <td><?= \Ponponumi\ViteLoader\TypeGet::extension("css") ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
