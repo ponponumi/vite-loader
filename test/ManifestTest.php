@@ -30,13 +30,17 @@ $webPath = \Ponponumi\ViteLoader\Manifest::webPathGet(
 );
 var_dump($webPath);
 
-$webPath = \Ponponumi\ViteLoader\Manifest::webPathGet(
-    "asset/js/jsfile.js",
-    $manifest,
-    "http://localhost",
-    true,
-    "http://localhost:5173",
-    true,
-    true
-);
-var_dump($webPath);
+try{
+    $webPath = \Ponponumi\ViteLoader\Manifest::webPathGet(
+        "asset/js/jsfile.js",
+        $manifest,
+        "http://localhost",
+        false,
+        "http://localhost:5173",
+        true,
+        true
+    );
+    var_dump($webPath);
+}catch(Exception $e){
+    var_dump($e->getMessage());
+}
