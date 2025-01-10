@@ -51,6 +51,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td>(空の文字列)</td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::urlLastSlashAdd("")) ?></td>
             </tr>
+            <tr>
+                <td><?= htmlspecialchars('<link rel="stylesheet" href="/assets/style.css">') ?></td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/style.css")) ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
