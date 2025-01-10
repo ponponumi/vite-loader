@@ -63,6 +63,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td><?= htmlspecialchars('<link rel="stylesheet" href="/assets/style.sass">') ?></td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/style.sass")) ?></td>
             </tr>
+            <tr>
+                <td><?= htmlspecialchars('<script src="/assets/script.js"></script>') ?></td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/script.js")) ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
