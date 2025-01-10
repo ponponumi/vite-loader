@@ -83,6 +83,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td><?= htmlspecialchars('<script type="module" src="/assets/script.ts"></script>') ?></td>
                 <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/script.ts",true)) ?></td>
             </tr>
+            <tr>
+                <td><?= htmlspecialchars('(空の文字列)') ?></td>
+                <td><?= htmlspecialchars(\Ponponumi\ViteLoader\LinkCreate::htmlCreate("/assets/icon.png")) ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
