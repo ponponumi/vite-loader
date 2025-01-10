@@ -47,6 +47,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td>style</td>
                 <td><?= \Ponponumi\ViteLoader\TypeGet::extension("styl") ?></td>
             </tr>
+            <tr>
+                <td>script</td>
+                <td><?= \Ponponumi\ViteLoader\TypeGet::extension("js") ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
