@@ -67,6 +67,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td>script</td>
                 <td><?= \Ponponumi\ViteLoader\TypeGet::extension("coffee") ?></td>
             </tr>
+            <tr>
+                <td>(空の文字列)</td>
+                <td><?= \Ponponumi\ViteLoader\TypeGet::extension("jpg") ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
