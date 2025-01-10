@@ -64,14 +64,14 @@ class Manifest
 
         if($devMode && $devServerHostWeb !== "" && $devServerAccessStatus){
             // デバッグモードなら
-            $path = $devServerHostWeb . $sourcePath;
+            $path = LinkCreate::urlLastSlashAdd($devServerHostWeb) . $sourcePath;
         }else{
             // デバッグモードでなければ
             $data = self::pathGet($sourcePath, $manifestData, $errorMode);
 
             if($data !== ""){
                 // データがあれば
-                $path = $buildPath . $data;
+                $path = LinkCreate::urlLastSlashAdd($buildPath) . $data;
             }
         }
 
