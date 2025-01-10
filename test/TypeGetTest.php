@@ -1,0 +1,31 @@
+<?php
+
+require __DIR__ . "/../vendor/autoload.php";
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeGetのテスト</title>
+</head>
+
+<body>
+    <h1>TypeGetのテスト</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>想定される結果</th>
+                <th>実行結果</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--  -->
+        </tbody>
+    </table>
+</body>
+
+</html>
