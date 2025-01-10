@@ -39,6 +39,10 @@ require __DIR__ . "/../vendor/autoload.php";
                 <td>style</td>
                 <td><?= \Ponponumi\ViteLoader\TypeGet::extension("less") ?></td>
             </tr>
+            <tr>
+                <td>style</td>
+                <td><?= \Ponponumi\ViteLoader\TypeGet::extension("stylus") ?></td>
+            </tr>
         </tbody>
     </table>
 </body>
