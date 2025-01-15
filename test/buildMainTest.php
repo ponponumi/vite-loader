@@ -17,6 +17,12 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
     <?php $vite->html("asset/scss/style.scss") ?>
 </head>
 <body>
-    <!--  -->
+    <?php
+
+    $vite->htmlList(["asset/ts/script.ts"]);
+    $vite->moduleModeSet();
+    $vite->htmlList(["asset/js/script.js"]);
+
+    ?>
 </body>
 </html>
