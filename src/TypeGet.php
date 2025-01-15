@@ -36,6 +36,12 @@ class TypeGet
         return $type;
     }
 
+    /**
+     * ファイルパスからタイプを取得します。
+     *
+     * @param string $extension ここには、拡張子を渡して下さい。
+     * @return string JS系であれば「script」、CSS系であれば「style」、それ以外は空の文字列を返します。
+     */
     public static function path(string|null $path): string
     {
         // パスからファイルのタイプを取得する
