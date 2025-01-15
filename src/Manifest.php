@@ -25,6 +25,14 @@ class Manifest
         return [];
     }
 
+    /**
+     * ソースのパスからビルド後のデータを取得する
+     *
+     * @param string $sourcePath ここには、ソースファイルのパスを渡して下さい。
+     * @param array $manifestData ここには、manifest.jsonの中身を渡して下さい。
+     * @param boolean $errorMode ファイルが見つからない場合、エラーを発生させるにはtrueを渡して下さい。
+     * @return array
+     */
     public static function dataGet(string $sourcePath, array $manifestData, $errorMode=false): array
     {
         // ソースのパスからビルド後のデータを取得する
