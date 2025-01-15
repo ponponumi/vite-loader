@@ -71,6 +71,18 @@ class Manifest
         return $result;
     }
 
+    /**
+     * ソースのパスからビルド後のURLを取得します。
+     *
+     * @param string $sourcePath ここには、ソースファイルのパスを渡して下さい。
+     * @param array $manifestData ここには、manifest.jsonの中身を渡して下さい。
+     * @param string $buildPath ここには、ビルド済みファイルが保存されたパスを渡して下さい。
+     * @param mixed $devMode ここには、開発モードを有効にするかを渡して下さい。
+     * @param string $devServerHostWeb ここには、開発サーバーのホストを渡して下さい。
+     * @param mixed $devServerAccessStatus ここには、開発サーバーのステータスを渡して下さい。
+     * @param boolean $errorMode ファイルが見つからない場合、エラーを発生させるにはtrueを渡して下さい。
+     * @return string
+     */
     public static function webPathGet(
         string $sourcePath,
         array $manifestData,
