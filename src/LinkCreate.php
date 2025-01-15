@@ -47,6 +47,12 @@ class LinkCreate
         return self::js($url, true);
     }
 
+    /**
+     * URLの最後にスラッシュを追加します。
+     *
+     * @param string $url ここには、URLを渡して下さい。
+     * @return string
+     */
     public static function urlLastSlashAdd(string $url): string
     {
         // URLの最後にスラッシュを追加する
