@@ -63,7 +63,7 @@ class LinkCreate
 
     public static function htmlCreate(string $url, $moduleMode=false, string $getType=""): string
     {
-
+        // HTMLを生成する
         $html = "";
         $type = TypeGet::path($url);
 
