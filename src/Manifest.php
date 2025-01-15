@@ -57,7 +57,7 @@ class Manifest
      * @param string $sourcePath ここには、ソースファイルのパスを渡して下さい。
      * @param array $manifestData ここには、manifest.jsonの中身を渡して下さい。
      * @param boolean $errorMode ファイルが見つからない場合、エラーを発生させるにはtrueを渡して下さい。
-     * @return array
+     * @return string
      */
     public static function pathGet(string $sourcePath, array $manifestData, $errorMode=false): string
     {
