@@ -26,5 +26,9 @@ $vite = new \Ponponumi\ViteLoader\ViteLoader(__DIR__ . "/build/.vite/manifest.js
     ?>
 
     <pre><?php var_dump($vite->typeWebPathGet("asset/scss/style.scss")) ?></pre>
+    <pre><?php var_dump($vite->separateByTypeWebPathListGet([
+        "asset/scss/style.scss",
+        "asset/ts/script.ts",
+    ])) ?></pre>
 </body>
 </html>
