@@ -4,6 +4,12 @@ namespace Ponponumi\ViteLoader;
 
 class LinkCreate
 {
+    /**
+     * CSSのHTMLリンクを生成します。
+     *
+     * @param string $url ここには、CSSのURLを入れてください。
+     * @return string
+     */
     public static function css(string $url): string
     {
         // CSSのリンクを作る
