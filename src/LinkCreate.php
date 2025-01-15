@@ -67,6 +67,14 @@ class LinkCreate
         return $url;
     }
 
+    /**
+     * URLからCSSまたはJavaScript読み込み用のHTMLを生成します。
+     *
+     * @param string $url ここには、URLを渡して下さい。
+     * @param boolean $moduleMode モジュールモードにする場合は、trueを渡して下さい。
+     * @param string $getType JSのみ読み込む場合は「script」、CSSのみ読み込む場合は「style」を渡して下さい。それ以外の値を渡すと、どちらも読み込まれます。
+     * @return string
+     */
     public static function htmlCreate(string $url, $moduleMode=false, string $getType=""): string
     {
         // HTMLを生成する
