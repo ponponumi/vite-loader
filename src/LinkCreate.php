@@ -20,7 +20,7 @@ class LinkCreate
      * JavaScriptのHTMLリンクを生成します。
      *
      * @param string $url ここには、JavaScriptのURLを入れてください。
-     * @param boolean $moduleMode
+     * @param boolean $moduleMode モジュールモードにする場合は、trueを渡して下さい。
      * @return string
      */
     public static function js(string $url, $moduleMode = false): string
