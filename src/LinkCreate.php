@@ -35,6 +35,12 @@ class LinkCreate
         return '<script ' . $module . 'src="' . $url . '"></script>';
     }
 
+    /**
+     * JavaScriptモジュールのHTMLリンクを生成します。
+     *
+     * @param string $url ここには、JavaScriptのURLを入れてください。
+     * @return string
+     */
     public static function module(string $url): string
     {
         // JSのモジュールのリンクを作る
