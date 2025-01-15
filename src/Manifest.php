@@ -4,6 +4,12 @@ namespace Ponponumi\ViteLoader;
 
 class Manifest
 {
+    /**
+     * manifest.jsonを読み込みます。
+     *
+     * @param string $path ここには、manifest.jsonのパスを渡して下さい。
+     * @return array manifest.jsonがあればそのデータ、なければ空の配列を返します。
+     */
     public static function load(string $path): array
     {
         // manifest.jsonを読み込む
