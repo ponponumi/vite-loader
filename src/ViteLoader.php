@@ -2,7 +2,7 @@
 
 namespace Ponponumi\ViteLoader;
 
-class ViteLoader 
+class ViteLoader
 {
     public $manifestPath;
     public $buildPath;
@@ -11,7 +11,7 @@ class ViteLoader
     public bool $devMode = false;
     public string $devServerHost = "";
     public string $devServerHostWeb = "";
-    public bool $devServerAccessStatus;
+    public bool $devServerAccessStatus = false;
     public string $viteReloadPath = "";
     public $moduleMode = false;
 
