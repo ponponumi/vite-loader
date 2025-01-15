@@ -16,6 +16,13 @@ class LinkCreate
         return '<link rel="stylesheet" href="' . $url . '">';
     }
 
+    /**
+     * JavaScriptのHTMLリンクを生成します。
+     *
+     * @param string $url ここには、JavaScriptのURLを入れてください。
+     * @param boolean $moduleMode
+     * @return string
+     */
     public static function js(string $url, $moduleMode = false): string
     {
         // JSのリンクを作る
