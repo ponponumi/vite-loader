@@ -314,6 +314,12 @@ class ViteLoader
         return TypeGet::extension($extension);
     }
 
+    /**
+     * パスから、ファイルのタイプを取得します。
+     *
+     * @param string|null $path ここには、パスを渡して下さい。
+     * @return string
+     */
     public function typeGetPath(string|null $path): string
     {
         // パスからファイルのタイプを取得する
