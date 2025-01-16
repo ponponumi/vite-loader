@@ -218,6 +218,13 @@ class ViteLoader
         return $html;
     }
 
+    /**
+     * ソースのパスリストから、HTMLを出力します。
+     *
+     * @param array $sourcePathList ここには、ソースのパスリストを渡して下さい。
+     * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
+     * @return void
+     */
     public function htmlList(array $sourcePathList, string $getType = ""): void
     {
         // ソースのパスリストからHTMLを出力する
