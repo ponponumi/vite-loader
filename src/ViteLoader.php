@@ -84,7 +84,7 @@ class ViteLoader
 
     /**
      * ソースのパスからビルド後のパスを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の文字列を返します。
-     * 
+     *
      * @param mixed $sourcePath ここには、ソースのパスを渡して下さい。
      * @return string
      */
@@ -95,6 +95,12 @@ class ViteLoader
         return Manifest::pathGet($sourcePath, $this->manifestData, $this->errorMode);
     }
 
+    /**
+     * ソースのパスからビルド後のWebのパスを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の文字列を返します。
+     *
+     * @param mixed $sourcePath ここには、ソースのパスを渡して下さい。
+     * @return string
+     */
     public function buildWebPathGet($sourcePath): string
     {
         // ソースのパスからビルド後のWeb用パスを取得する
