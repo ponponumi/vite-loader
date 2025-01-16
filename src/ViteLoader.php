@@ -127,6 +127,12 @@ class ViteLoader
         $this->moduleMode = $set;
     }
 
+    /**
+     * CSSのHTMLのリンクを作ります。
+     *
+     * @param string $url ここには、CSSのURLを渡して下さい。
+     * @return string
+     */
     public function cssLinkCreate(string $url): string
     {
         // CSSのリンクを作る
