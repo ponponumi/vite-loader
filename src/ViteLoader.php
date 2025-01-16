@@ -400,6 +400,12 @@ class ViteLoader
         return $html;
     }
 
+    /**
+     * タイプ別に分け、Webのパスをリストで取得します。
+     *
+     * @param array $pathList ここには、ソースのパスの一覧を渡して下さい。
+     * @return array
+     */
     public function separateByTypeWebPathListGet(array $pathList): array
     {
         // タイプ別に分け、Webのパスをリストで取得する
