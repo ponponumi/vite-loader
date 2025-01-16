@@ -431,7 +431,7 @@ class ViteLoader
 
     /**
      * タイプとWebのパスをリストで取得します。
-     * 
+     *
      * @param array $pathList ここには、ソースのパスのリストを渡して下さい。
      * @return array
      */
@@ -452,6 +452,12 @@ class ViteLoader
         return $result;
     }
 
+    /**
+     * Webのパスから、ソースのパスを取得します。
+     *
+     * @param string|null $webPath ここには、Webのパスを渡して下さい。
+     * @return string
+     */
     public function sourcePathGet(string|null $webPath): string
     {
         // Webのパスからソースのパスを取得する
