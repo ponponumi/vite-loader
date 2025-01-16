@@ -26,7 +26,7 @@ use Ponponumi\ViteLoader\ViteLoader;
 
 例えば、このような構成だったとします。
 
-* Webサーバー: http://localhost
+* Webサーバー: `http://localhost`
 * 開発サーバー: Dockerのviteというコンテナで、ポート5173で動作
 
 この場合、次のように渡してください。
