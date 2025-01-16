@@ -261,6 +261,14 @@ class ViteLoader
         return $check;
     }
 
+    /**
+     * 開発サーバーの設定をします。
+     * 
+     * @param bool $devMode デバッグモードを有効にするか渡して下さい。
+     * @param string $devHost 開発サーバーのホストを渡して下さい。
+     * @param string $devHostWeb 開発サーバーのWeb上のホストを渡して下さい。省略した場合は、$devHostの値を使います。
+     * @return void
+     */
     public function devServerSetting(bool $devMode, string $devHost = "", string $devHostWeb = ""): void
     {
         $this->devMode = $devMode;
