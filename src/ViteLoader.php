@@ -47,6 +47,12 @@ class ViteLoader
         $this->moduleModeSet($moduleMode);
     }
 
+    /**
+     * URLの最後にスラッシュを渡します。
+     *
+     * @param string $path ここには、URLを渡して下さい。
+     * @return string
+     */
     public function lastSlashAdd(string $path): string
     {
         // 最後にスラッシュを追加する
