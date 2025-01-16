@@ -381,6 +381,12 @@ class ViteLoader
         return $result;
     }
 
+    /**
+     * Viteのhmrを読み込むHTMLを取得します。
+     *
+     * @param mixed $delete 削除するかどうかを指定してください。
+     * @return string
+     */
     public function viteReloadHtmlGet($delete = true): string
     {
         // Viteのリロードスクリプト用HTMLを取得する
