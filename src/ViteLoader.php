@@ -82,6 +82,12 @@ class ViteLoader
         return Manifest::dataGet($sourcePath, $this->manifestData, $this->errorMode);
     }
 
+    /**
+     * ソースのパスからビルド後のパスを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の文字列を返します。
+     * 
+     * @param mixed $sourcePath ここには、ソースのパスを渡して下さい。
+     * @return string
+     */
     public function buildPathGet($sourcePath): string
     {
         // ソースのパスからビルド後のパスを取得する
