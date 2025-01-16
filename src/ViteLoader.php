@@ -363,6 +363,10 @@ class ViteLoader
         return $result;
     }
 
+    /**
+     * Viteのhmrのパスと、タイプを取得します。
+     * @return array
+     */
     public function typeViteReloadPathGet(): array
     {
         // タイプとViteのリロードスクリプトパスを取得する
