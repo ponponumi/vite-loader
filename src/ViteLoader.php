@@ -15,6 +15,15 @@ class ViteLoader
     public string $viteReloadPath = "";
     public $moduleMode = true;
 
+    /**
+     * コンストラクタです
+     *
+     * @param string $manifestPath ここには、manifest.jsonのパスを渡して下さい。
+     * @param string $buildPath ここには、ビルドフォルダのパスを渡して下さい。
+     * @param mixed $errorMode エラーモードを有効にする場合は、trueを渡して下さい。
+     * @param array $viteDevServer 開発サーバーを有効にする場合は、trueを渡して下さい。
+     * @param mixed $moduleMode モジュールスクリプトモードを有効にする場合は、trueを渡して下さい。
+     */
     public function __construct(
         string $manifestPath,
         string $buildPath = "",
