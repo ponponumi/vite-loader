@@ -429,6 +429,12 @@ class ViteLoader
         return $result;
     }
 
+    /**
+     * タイプとWebのパスをリストで取得します。
+     * 
+     * @param array $pathList ここには、ソースのパスのリストを渡して下さい。
+     * @return array
+     */
     public function typeWebPathListGet(array $pathList): array
     {
         // タイプとWebのパスをリストで取得する
