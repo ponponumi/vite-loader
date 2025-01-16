@@ -85,10 +85,10 @@ class ViteLoader
     /**
      * ソースのパスからビルド後のパスを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の文字列を返します。
      *
-     * @param mixed $sourcePath ここには、ソースのパスを渡して下さい。
+     * @param string $sourcePath ここには、ソースのパスを渡して下さい。
      * @return string
      */
-    public function buildPathGet($sourcePath): string
+    public function buildPathGet(string $sourcePath): string
     {
         // ソースのパスからビルド後のパスを取得する
         // なければ空の文字を返す
@@ -205,7 +205,7 @@ class ViteLoader
 
     /**
      * ソースのパスリストから、HTMLを返します。
-     * 
+     *
      * @param array $sourcePathList ここには、ソースのパスリストを渡して下さい。
      * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
      * @return string
