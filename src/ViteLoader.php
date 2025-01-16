@@ -193,11 +193,11 @@ class ViteLoader
     /**
      * HTMLを出力します。
      *
-     * @param mixed $sourcePath ここには、ソースのパスを渡して下さい。
+     * @param string $sourcePath ここには、ソースのパスを渡して下さい。
      * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
      * @return void
      */
-    public function html($sourcePath, string $getType = ""): void
+    public function html(string $sourcePath, string $getType = ""): void
     {
         // HTMLに出力する
         echo $this->htmlGet($sourcePath, $getType);
