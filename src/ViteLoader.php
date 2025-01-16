@@ -69,6 +69,12 @@ class ViteLoader
         return $this->manifestData;
     }
 
+    /**
+     * ソースのパスからビルド後のデータを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の配列を返します。
+     *
+     * @param mixed $sourcePath ここには、ソースのパスを渡して下さい。
+     * @return array
+     */
     public function buildDataGet($sourcePath): array
     {
         // ソースのパスからビルド後のデータを取得する
