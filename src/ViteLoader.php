@@ -163,6 +163,13 @@ class ViteLoader
         return LinkCreate::module($url);
     }
 
+    /**
+     * HTMLを取得します。
+     *
+     * @param mixed $sourcePath ここには、ソースのパスを渡して下さい。
+     * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
+     * @return string
+     */
     public function htmlGet($sourcePath, string $getType = ""): string
     {
         // HTMLを取得する
