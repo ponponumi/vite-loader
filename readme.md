@@ -20,6 +20,26 @@ require_once __DIR__ . "/vendor/autoload.php";
 use Ponponumi\ViteLoader\ViteLoader;
 ```
 
+## 使い方
+
+### インスタンスの作成
+
+例えば、このような構成だったとします。
+
+* Webサーバー: http://localhost
+* 開発サーバー: Dockerのviteというコンテナで、ポート5173で動作
+
+この場合、次のように渡してください。
+
+```php
+require_once __DIR__ . "/vendor/autoload.php";
+
+use Ponponumi\ViteLoader\ViteLoader;
+
+$viteLoader = new ViteLoader(__DIR__ . "/build/.vite/manifest.json","http://localhost/build");
+$viteLoader->devServerSetting(true,"http://vite:5173","http://localhost:5173");
+```
+
 ## ライセンスについて
 
 このパッケージは、MITライセンスとして作成されています。
