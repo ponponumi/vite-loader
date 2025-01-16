@@ -2,7 +2,8 @@
 
 namespace Ponponumi\ViteLoader;
 
-class ViteLoader {
+class ViteLoader
+{
     public $manifestPath;
     public $buildPath;
     public $manifestData = [];
@@ -10,21 +11,32 @@ class ViteLoader {
     public bool $devMode = false;
     public string $devServerHost = "";
     public string $devServerHostWeb = "";
-    public bool $devServerAccessStatus;
+    public bool $devServerAccessStatus = false;
     public string $viteReloadPath = "";
-    public $moduleMode = false;
+    public $moduleMode = true;
 
-    public function __construct($manifestPath, $buildPath = "", $errorMode = false, array $viteDevServer = [], $moduleMode = false) {
+    /**
+     * コンストラクタです
+     *
+     * @param string $manifestPath ここには、manifest.jsonのパスを渡して下さい。
+     * @param string $buildPath ここには、ビルドフォルダのパスを渡して下さい。
+     * @param mixed $errorMode エラーモードを有効にする場合は、trueを渡して下さい。
+     * @param array $viteDevServer 開発サーバーを有効にする場合は、trueを渡して下さい。
+     * @param mixed $moduleMode モジュールスクリプトモードを有効にする場合は、trueを渡して下さい。
+     */
+    public function __construct(
+        string $manifestPath,
+        string $buildPath = "",
+        $errorMode = false,
+        array $viteDevServer = [],
+        $moduleMode = true
+    )
+    {
         $this->manifestPath = $manifestPath;
         $this->buildPath = $this->lastSlashAdd($buildPath);
 
         $this->errorMode = $errorMode;
-
-        if (file_exists($manifestPath)) {
-            $json = file_get_contents($manifestPath);
-            $data = json_decode($json, true);
-            $this->manifestData = $data;
-        }
+        $this->manifestData = Manifest::load($manifestPath);
 
         $this->devServerSetting(
             array_key_exists('devMode', $viteDevServer) ? boolval($viteDevServer['devMode']) : false,
@@ -35,120 +47,135 @@ class ViteLoader {
         $this->moduleModeSet($moduleMode);
     }
 
-    public function lastSlashAdd($path) {
+    /**
+     * URLの最後にスラッシュを渡します。
+     *
+     * @param string $path ここには、URLを渡して下さい。
+     * @return string
+     */
+    public function lastSlashAdd(string $path): string
+    {
         // 最後にスラッシュを追加する
-        if ($path !== "") {
-            // パスの文字があれば
-            if (substr($path, -1) !== "/") {
-                // 最後の文字がスラッシュでなければ
-                $path .= "/";
-            }
-        }
-
-        return $path;
+        return LinkCreate::urlLastSlashAdd($path);
     }
 
-    public function manifestDataGet() {
+    /**
+     * マニフェストのデータを取得します
+     * @return array
+     */
+    public function manifestDataGet(): array
+    {
         // マニフェストデータを取得する
         return $this->manifestData;
     }
 
-    public function buildDataGet($sourcePath) {
+    /**
+     * ソースのパスからビルド後のデータを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の配列を返します。
+     *
+     * @param string $sourcePath ここには、ソースのパスを渡して下さい。
+     * @return array
+     */
+    public function buildDataGet(string $sourcePath): array
+    {
         // ソースのパスからビルド後のデータを取得する
-        // なければnullを返す
-        if (array_key_exists($sourcePath, $this->manifestData)) {
-            // ある場合
-            return $this->manifestData[$sourcePath];
-        } else {
-            // ない場合
-            if ($this->errorMode) {
-                // エラーモードが有効であれば
-                throw new \Exception("'$sourcePath' は見つかりません");
-            }
-
-            return null;
-        }
+        // なければ空の配列を返す
+        return Manifest::dataGet($sourcePath, $this->manifestData, $this->errorMode);
     }
 
-    public function buildPathGet($sourcePath) {
+    /**
+     * ソースのパスからビルド後のパスを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の文字列を返します。
+     *
+     * @param string $sourcePath ここには、ソースのパスを渡して下さい。
+     * @return string
+     */
+    public function buildPathGet(string $sourcePath): string
+    {
         // ソースのパスからビルド後のパスを取得する
-        // なければnullを返す
-        $data = $this->buildDataGet($sourcePath);
-
-        if ($data) {
-            // ある場合
-            return $data["file"];
-        } else {
-            // ない場合
-            return null;
-        }
+        // なければ空の文字を返す
+        return Manifest::pathGet($sourcePath, $this->manifestData, $this->errorMode);
     }
 
-    public function buildWebPathGet($sourcePath) {
+    /**
+     * ソースのパスからビルド後のWebのパスを取得します。ファイルが見つからない場合、errorModeが有効ならエラーが発生し、無効なら空の文字列を返します。
+     *
+     * @param string $sourcePath ここには、ソースのパスを渡して下さい。
+     * @return string
+     */
+    public function buildWebPathGet(string $sourcePath): string
+    {
         // ソースのパスからビルド後のWeb用パスを取得する
-        // なければnullを返す
-        if ($this->devMode && $this->devServerHost !== "" && $this->devServerAccessStatus) {
-            // 開発サーバーからのURLを取得するなら
-            return $this->devServerHostWeb . $sourcePath;
-        } else {
-            $data = $this->buildPathGet($sourcePath);
-
-            if ($data) {
-                // ある場合
-                return $this->buildPath . $data;
-            } else {
-                // ない場合
-                return null;
-            }
-        }
+        // なければ空の文字を返す
+        return Manifest::webPathGet(
+            $sourcePath,
+            $this->manifestData,
+            $this->buildPath,
+            $this->devMode,
+            $this->devServerHostWeb,
+            $this->devServerAccessStatus,
+            $this->errorMode
+        );
     }
 
-    public function moduleModeSet($set = true) {
+    /**
+     * モジュールスクリプトモードを有効にするか設定します。
+     *
+     * @param mixed $set ここには、新たな値を設定してください。
+     * @return void
+     */
+    public function moduleModeSet($set = true): void
+    {
         $this->moduleMode = $set;
     }
 
-    public function cssLinkCreate(string $url) {
+    /**
+     * CSSのHTMLのリンクを作ります。
+     *
+     * @param string $url ここには、CSSのURLを渡して下さい。
+     * @return string
+     */
+    public function cssLinkCreate(string $url): string
+    {
         // CSSのリンクを作る
-        return '<link rel="stylesheet" href="' . $url . '">';
+        return LinkCreate::css($url);
     }
 
-    public function jsLinkCreate(string $url, $moduleMode = false) {
-        $module = "";
-
-        if ($moduleMode) {
-            $module = 'type="module" ';
-        }
-
-        return '<script ' . $module . 'src="' . $url . '"></script>';
+    /**
+     * JSのHTMLのリンクを作ります。
+     *
+     * @param string $url ここには、JSのURLを渡して下さい。
+     * @param mixed $moduleMode モジュールモードを有効にする場合は、trueを渡して下さい。
+     * @return string
+     */
+    public function jsLinkCreate(string $url, $moduleMode = false): string
+    {
+        return LinkCreate::js($url, $moduleMode);
     }
 
-    public function moduleLinkCreate(string $url) {
-        return $this->jsLinkCreate($url, true);
+
+    /**
+     * JSモジュールのHTMLのリンクを作ります。
+     *
+     * @param string $url ここには、JSのURLを渡して下さい。
+     * @return string
+     */
+    public function moduleLinkCreate(string $url): string
+    {
+        return LinkCreate::module($url);
     }
 
-    public function htmlGet($sourcePath, string $getType = "") {
+    /**
+     * HTMLを取得します。
+     *
+     * @param string $sourcePath ここには、ソースのパスを渡して下さい。
+     * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
+     * @return string
+     */
+    public function htmlGet(string $sourcePath, string $getType = ""): string
+    {
         // HTMLを取得する
         // なければ空文字を返す
-        $html = "";
         $url = $this->buildWebPathGet($sourcePath);
-        $type = $this->typeGetPath($url);
-
-        switch ($type) {
-            case "style":
-                if ($getType !== "script") {
-                    $html = $this->cssLinkCreate($url);
-                }
-                break;
-            case "script":
-                if ($getType !== "style") {
-                    if ($this->moduleMode) {
-                        $html = $this->moduleLinkCreate($url);
-                    } else {
-                        $html = $this->jsLinkCreate($url);
-                    }
-                }
-                break;
-        }
+        $html = LinkCreate::htmlCreate($url, $this->moduleMode, $getType);
 
         $viteReloadHtml = $this->viteReloadHtmlGet();
 
@@ -159,12 +186,28 @@ class ViteLoader {
         return $html;
     }
 
-    public function html($sourcePath, string $getType = "") {
+    /**
+     * HTMLを出力します。
+     *
+     * @param string $sourcePath ここには、ソースのパスを渡して下さい。
+     * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
+     * @return void
+     */
+    public function html(string $sourcePath, string $getType = ""): void
+    {
         // HTMLに出力する
         echo $this->htmlGet($sourcePath, $getType);
     }
 
-    public function htmlListGet(array $sourcePathList, string $getType = "") {
+    /**
+     * ソースのパスリストから、HTMLを返します。
+     *
+     * @param array $sourcePathList ここには、ソースのパスリストを渡して下さい。
+     * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
+     * @return string
+     */
+    public function htmlListGet(array $sourcePathList, string $getType = ""): string
+    {
         // ソースのパスリストからHTMLを返す
         $html = "";
 
@@ -175,12 +218,26 @@ class ViteLoader {
         return $html;
     }
 
-    public function htmlList(array $sourcePathList, string $getType = "") {
+    /**
+     * ソースのパスリストから、HTMLを出力します。
+     *
+     * @param array $sourcePathList ここには、ソースのパスリストを渡して下さい。
+     * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
+     * @return void
+     */
+    public function htmlList(array $sourcePathList, string $getType = ""): void
+    {
         // ソースのパスリストからHTMLを出力する
         echo $this->htmlListGet($sourcePathList, $getType);
     }
 
-    private function devServerAccess() {
+    /**
+     * 開発サーバーにアクセスします。
+     *
+     * @return bool
+     */
+    private function devServerAccess(): bool
+    {
         // 開発サーバーにアクセスする
         // 開発サーバーが動いていればtrue、動いていなければfalseを返す
         $check = false;
@@ -204,7 +261,16 @@ class ViteLoader {
         return $check;
     }
 
-    public function devServerSetting(bool $devMode, string $devHost = "", string $devHostWeb = "") {
+    /**
+     * 開発サーバーの設定をします。
+     *
+     * @param bool $devMode デバッグモードを有効にするか渡して下さい。
+     * @param string $devHost 開発サーバーのホストを渡して下さい。
+     * @param string $devHostWeb 開発サーバーのWeb上のホストを渡して下さい。省略した場合は、$devHostの値を使います。
+     * @return void
+     */
+    public function devServerSetting(bool $devMode, string $devHost = "", string $devHostWeb = ""): void
+    {
         $this->devMode = $devMode;
 
         if ($devMode) {
@@ -217,7 +283,15 @@ class ViteLoader {
         }
     }
 
-    private function typeGetArrayCreate(string|null $path, string $type){
+    /**
+     * タイプとパスに分けて取得するためのベースの配列を作ります。
+     *
+     * @param string|null $path ここには、パスを渡して下さい。
+     * @param string $type ここには、種類を渡して下さい。
+     * @return array
+     */
+    private function typeGetArrayCreate(string|null $path, string $type): array
+    {
         if($path === null){
             $path = "";
         }
@@ -228,45 +302,38 @@ class ViteLoader {
         ];
     }
 
-    public function typeGetExtension(string $extension) {
+    /**
+     * 拡張子からファイルのタイプを取得します。
+     *
+     * @param string $extension ここには、拡張子を渡して下さい。
+     * @return string
+     */
+    public function typeGetExtension(string $extension): string
+    {
         // 拡張子からファイルのタイプを取得する
-        $type = "";
-
-        switch (mb_strtolower($extension)) {
-            case "css":
-            case "scss":
-            case "sass":
-            case "less":
-            case "stylus":
-            case "styl":
-                $type = "style";
-                break;
-
-            case "js":
-            case "ts":
-            case "jsx":
-            case "tsx":
-            case "coffee":
-                $type = "script";
-                break;
-        }
-
-        return $type;
+        return TypeGet::extension($extension);
     }
 
-    public function typeGetPath(string|null $path) {
+    /**
+     * パスから、ファイルのタイプを取得します。
+     *
+     * @param string|null $path ここには、パスを渡して下さい。
+     * @return string
+     */
+    public function typeGetPath(string|null $path): string
+    {
         // パスからファイルのタイプを取得する
-        $result = "";
-
-        if ($path !== null) {
-            $extension = pathinfo($path, PATHINFO_EXTENSION);
-            $result = $this->typeGetExtension($extension);
-        }
-
-        return $result;
+        return TypeGet::path($path);
     }
 
-    public function typeWebPathGet(string $path) {
+    /**
+     * タイプとWebのパスを取得します。
+     *
+     * @param string $path ここには、ソースのパスを渡して下さい。
+     * @return array
+     */
+    public function typeWebPathGet(string $path): array
+    {
         // タイプとWebのパスを取得する
         $webPath = $this->buildWebPathGet($path);
         $type = $this->typeGetPath($webPath);
@@ -274,7 +341,14 @@ class ViteLoader {
         return $this->typeGetArrayCreate($webPath, $type);
     }
 
-    public function viteReloadPathGet($delete = true) {
+    /**
+     * Viteのhmrのパスを取得します。
+     *
+     * @param mixed $delete ここには、取得後に削除するかを渡して下さい。
+     * @return string
+     */
+    public function viteReloadPathGet($delete = true): string
+    {
         // Viteのリロードスクリプトパスを取得する
         $result = "";
 
@@ -289,7 +363,12 @@ class ViteLoader {
         return $result;
     }
 
-    public function typeViteReloadPathGet() {
+    /**
+     * Viteのhmrのパスと、タイプを取得します。
+     * @return array
+     */
+    public function typeViteReloadPathGet(): array
+    {
         // タイプとViteのリロードスクリプトパスを取得する
         // なければ空の配列を返す
         $result = [];
@@ -302,7 +381,14 @@ class ViteLoader {
         return $result;
     }
 
-    public function viteReloadHtmlGet($delete = true) {
+    /**
+     * Viteのhmrを読み込むHTMLを取得します。
+     *
+     * @param mixed $delete 削除するかどうかを指定してください。
+     * @return string
+     */
+    public function viteReloadHtmlGet($delete = true): string
+    {
         // Viteのリロードスクリプト用HTMLを取得する
         $html = "";
         $reloadPath = $this->viteReloadPathGet($delete);
@@ -314,7 +400,14 @@ class ViteLoader {
         return $html;
     }
 
-    public function separateByTypeWebPathListGet(array $pathList) {
+    /**
+     * タイプ別に分け、Webのパスをリストで取得します。
+     *
+     * @param array $pathList ここには、ソースのパスの一覧を渡して下さい。
+     * @return array
+     */
+    public function separateByTypeWebPathListGet(array $pathList): array
+    {
         // タイプ別に分け、Webのパスをリストで取得する
         $result = [
             "style" => [],
@@ -336,7 +429,14 @@ class ViteLoader {
         return $result;
     }
 
-    public function typeWebPathListGet(array $pathList) {
+    /**
+     * タイプとWebのパスをリストで取得します。
+     *
+     * @param array $pathList ここには、ソースのパスのリストを渡して下さい。
+     * @return array
+     */
+    public function typeWebPathListGet(array $pathList): array
+    {
         // タイプとWebのパスをリストで取得する
         $result = [];
         $viteReload = $this->typeViteReloadPathGet();
@@ -352,7 +452,14 @@ class ViteLoader {
         return $result;
     }
 
-    public function sourcePathGet(string|null $webPath): string {
+    /**
+     * Webのパスから、ソースのパスを取得します。
+     *
+     * @param string|null $webPath ここには、Webのパスを渡して下さい。
+     * @return string
+     */
+    public function sourcePathGet(string|null $webPath): string
+    {
         // Webのパスからソースのパスを取得する
         if($webPath === null){
             return "";
