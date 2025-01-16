@@ -326,6 +326,12 @@ class ViteLoader
         return TypeGet::path($path);
     }
 
+    /**
+     * タイプとWebのパスを取得します。
+     *
+     * @param string $path ここには、ソースのパスを渡して下さい。
+     * @return array
+     */
     public function typeWebPathGet(string $path): array
     {
         // タイプとWebのパスを取得する
