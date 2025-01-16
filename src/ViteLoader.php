@@ -302,6 +302,12 @@ class ViteLoader
         ];
     }
 
+    /**
+     * 拡張子からファイルのタイプを取得します。
+     *
+     * @param string $extension ここには、拡張子を渡して下さい。
+     * @return string
+     */
     public function typeGetExtension(string $extension): string
     {
         // 拡張子からファイルのタイプを取得する
