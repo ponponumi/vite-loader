@@ -105,15 +105,19 @@ class ViteLoader
     {
         // ソースのパスからビルド後のWeb用パスを取得する
         // なければ空の文字を返す
-        return Manifest::webPathGet(
-            $sourcePath,
-            $this->manifestData,
-            $this->buildPath,
-            $this->devMode,
-            $this->devServerHostWeb,
-            $this->devServerAccessStatus,
-            $this->errorMode
-        );
+        if(is_string($sourcePath)){
+            return Manifest::webPathGet(
+                $sourcePath,
+                $this->manifestData,
+                $this->buildPath,
+                $this->devMode,
+                $this->devServerHostWeb,
+                $this->devServerAccessStatus,
+                $this->errorMode
+            );
+        }else{
+            return "";
+        }
     }
 
     /**
