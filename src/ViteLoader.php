@@ -203,6 +203,13 @@ class ViteLoader
         echo $this->htmlGet($sourcePath, $getType);
     }
 
+    /**
+     * ソースのパスリストから、HTMLを返します。
+     * 
+     * @param array $sourcePathList ここには、ソースのパスリストを渡して下さい。
+     * @param string $getType ここには、どのタイプを取得するかを渡して下さい。
+     * @return string
+     */
     public function htmlListGet(array $sourcePathList, string $getType = ""): string
     {
         // ソースのパスリストからHTMLを返す
