@@ -139,6 +139,13 @@ class ViteLoader
         return LinkCreate::css($url);
     }
 
+    /**
+     * JSのHTMLのリンクを作ります。
+     *
+     * @param string $url ここには、JSのURLを渡して下さい。
+     * @param mixed $moduleMode モジュールモードを有効にする場合は、trueを渡して下さい。
+     * @return string
+     */
     public function jsLinkCreate(string $url, $moduleMode = false): string
     {
         return LinkCreate::js($url, $moduleMode);
