@@ -116,6 +116,12 @@ class ViteLoader
         );
     }
 
+    /**
+     * モジュールスクリプトモードを有効にするか設定します。
+     *
+     * @param mixed $set ここには、新たな値を設定してください。
+     * @return void
+     */
     public function moduleModeSet($set = true): void
     {
         $this->moduleMode = $set;
