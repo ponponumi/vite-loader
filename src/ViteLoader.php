@@ -231,6 +231,11 @@ class ViteLoader
         echo $this->htmlListGet($sourcePathList, $getType);
     }
 
+    /**
+     * 開発サーバーにアクセスします。
+     *
+     * @return bool
+     */
     private function devServerAccess(): bool
     {
         // 開発サーバーにアクセスする
