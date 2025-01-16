@@ -263,7 +263,7 @@ class ViteLoader
 
     /**
      * 開発サーバーの設定をします。
-     * 
+     *
      * @param bool $devMode デバッグモードを有効にするか渡して下さい。
      * @param string $devHost 開発サーバーのホストを渡して下さい。
      * @param string $devHostWeb 開発サーバーのWeb上のホストを渡して下さい。省略した場合は、$devHostの値を使います。
@@ -283,6 +283,13 @@ class ViteLoader
         }
     }
 
+    /**
+     * タイプとパスに分けて取得するためのベースの配列を作ります。
+     *
+     * @param string|null $path ここには、パスを渡して下さい。
+     * @param string $type ここには、種類を渡して下さい。
+     * @return array
+     */
     private function typeGetArrayCreate(string|null $path, string $type): array
     {
         if($path === null){
