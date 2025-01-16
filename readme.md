@@ -19,3 +19,7 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 use Ponponumi\ViteLoader\ViteLoader;
 ```
+
+## ライセンスについて
+
+このパッケージは、MITライセンスとして作成されています。
