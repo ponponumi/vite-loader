@@ -59,6 +59,10 @@ class ViteLoader
         return LinkCreate::urlLastSlashAdd($path);
     }
 
+    /**
+     * マニフェストのデータを取得します
+     * @return array
+     */
     public function manifestDataGet(): array
     {
         // マニフェストデータを取得する
