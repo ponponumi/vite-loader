@@ -341,6 +341,12 @@ class ViteLoader
         return $this->typeGetArrayCreate($webPath, $type);
     }
 
+    /**
+     * Viteのhmrのパスを取得します。
+     *
+     * @param mixed $delete ここには、取得後に削除するかを渡して下さい。
+     * @return string
+     */
     public function viteReloadPathGet($delete = true): string
     {
         // Viteのリロードスクリプトパスを取得する
